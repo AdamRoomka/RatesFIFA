@@ -5,22 +5,38 @@ function Fifa({all}) {
   return (
     <div>
       <table>
-        <tr><th>Group A</th></tr>
-        <tr>{all.map((groupA) => groupA.group === "A" ? (<td>{groupA.country}</td>) : (<></>))}</tr>
-        <tr><th>Group B</th></tr>
-        <tr>{all.map((groupB) => groupB.group === "B" ? (<td>{groupB.country}</td>) : (<></>))}</tr>
-        <tr><th>Group C</th></tr>
-        <tr>{all.map((groupC) => groupC.group === "C" ? (<td>{groupC.country}</td>) : (<></>))}</tr>
-        <tr><th>Group D</th></tr>
-        <tr>{all.map((groupD) => groupD.group === "D" ? (<td>{groupD.country}</td>) : (<></>))}</tr>
-        <tr><th>Group E</th></tr>
-        <tr>{all.map((groupE) => groupE.group === "E" ? (<td>{groupE.country}</td>) : (<></>))}</tr>
-        <tr><th>Group F</th></tr>
-        <tr>{all.map((groupF) => groupF.group === "F" ? (<td>{groupF.country}</td>) : (<></>))}</tr>
-        <tr><th>Group G</th></tr>
-        <tr>{all.map((groupG) => groupG.group === "G" ? (<td>{groupG.country}</td>) : (<></>))}</tr>
-        <tr><th>Group H</th></tr>
-        <tr>{all.map((groupH) => groupH.group === "H" ? (<td>{groupH.country}</td>) : (<></>))}</tr>
+        <div>
+          <tr><th>Group A</th></tr>
+          {all.map((groupA) => groupA.group === "A" ? (<tr><td>{groupA.country}</td></tr>) : (<></>))}
+        </div>
+        <div>
+          <tr><th>Group B</th></tr>
+          {all.map((groupB) => groupB.group === "B" ? (<tr><td>{groupB.country}</td></tr>) : (<></>))}
+        </div>
+        <div>
+          <tr><th>Group C</th></tr>
+          {all.map((groupC) => groupC.group === "C" ? (<tr><td>{groupC.country}</td></tr>) : (<></>))}
+        </div>
+        <div>
+          <tr><th>Group D</th></tr>
+          {all.map((groupD) => groupD.group === "D" ? (<tr><td>{groupD.country}</td></tr>) : (<></>))}
+        </div>
+        <div>
+          <tr><th>Group E</th></tr>
+          {all.map((groupE) => groupE.group === "E" ? (<tr><td>{groupE.country}</td></tr>) : (<></>))}
+        </div>
+        <div>
+          <tr><th>Group F</th></tr>
+          {all.map((groupF) => groupF.group === "F" ? (<tr><td>{groupF.country}</td></tr>) : (<></>))}
+        </div>
+        <div>
+          <tr><th>Group G</th></tr>
+          {all.map((groupG) => groupG.group === "G" ? (<tr><td>{groupG.country}</td></tr>) : (<></>))}
+        </div>
+        <div>
+          <tr><th>Group H</th></tr>
+          {all.map((groupH) => groupH.group === "H" ? (<tr><td>{groupH.country}</td></tr>) : (<></>))}
+        </div>
       </table>        
     </div>
 )}
