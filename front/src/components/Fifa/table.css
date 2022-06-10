@@ -1,14 +1,116 @@
 table{
     display: flex;
-    border-collapse: collapse;
     padding: 10px;
 }
-table div{
-  margin: 10px;
+.flagSize{
+  width: 30px;
 }
-
+.flagres{
+  width: 70%;
+  border-radius: 3px;
+}
+th{
+  background-color: rgb(243, 73, 73);
+}
+td{
+  background-color: rgba(255, 255, 255, 0.814);
+  color: black;
+  font-weight: bold;
+}
 td, th {
-  border: 1px solid #dddddd;
+  border: 1px solid #e96d6d;
   text-align: left;
   padding: 8px;
+}
+.fill{
+  background-color: #fff;
+  color: black;
+  max-width: 1500px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 30px;
+}
+input[type=text], select {
+  max-width: 30%;
+  padding: 12px 20px;
+  margin: 8px 8px 8px 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=number], select {
+  max-width: 35px;
+  height: 40px;
+  font-size: 30px;
+  border: 1px solid #ccc;
+  background-color: #3c3b3a;
+  color: #fff;
+  border-radius: 4px;
+  margin: 15px;
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.I{
+  background-color: #3c3b3a;
+  color: white;
+}
+.I h4{
+  margin: 2%;
+}
+.wyniki{
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+}
+.image1{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  justify-self: center;
+}
+.text1{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size: 20px;
+}
+.number1{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  align-self: center;
+}
+.vs{
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  align-self: center;
+}
+.number2{
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  align-self: center;
+}
+.image2{
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  justify-self: center;
+}
+.text2{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  font-size: 20px;
 }
