@@ -1,14 +1,14 @@
-const Fifa = require('../models/fifaModel');
+const teams = require('../models/teamModel');
 
 
-exports.getAllFifa = async (req, res) => {
+exports.getAllTeams = async (req, res) => {
     try {
-        const fifa = await Fifa.find();
+        const teams = await teams.find();
         res.status(200).json({
             status: 'success',
-            results: fifa.length,
+            results: teams.length,
             data: {
-                fifa: fifa
+                teams: teams
             }
         });
     } catch (err) {

@@ -1,11 +1,11 @@
 const express = require("express");
 
 const {
-  getAllFifa,
-} = require("./../controllers/fifaController");
+  getAllTeams,
+} = require("./../controllers/teamController");
 
 const router = express.Router();
 
-router.route("/").get(getAllFifa);
+router.route("/").get(getAllTeams);
 
 module.exports = router;
