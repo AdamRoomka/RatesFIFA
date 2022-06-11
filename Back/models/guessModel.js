@@ -11,6 +11,7 @@ const DBSchema = mongoose.Schema(
     userId: {type: Schema.Types.ObjectId, ref: 'user'},
     score1: {type:Number},
     score2:{type:Number},
+    accepted{type:Boolean,default:false}
   },
   { timestamps: true }
 );

@@ -2,7 +2,7 @@ const express = require("express");
 const { get } = require("http");
 const cookieSession = require("cookie-session");
 
-const fifa = require("./routes/fifaRoutes");
+const rates = require("./routes/teamRoutes");
 
 const app = express();
 var cors = require("cors");
@@ -24,7 +24,7 @@ app.use(
   })
 );
 
-app.use("/api/v1/fifa/", fifa);
+app.use("/api/v1/rates/", rates);
 
 
 module.exports = app;
