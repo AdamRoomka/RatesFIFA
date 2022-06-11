@@ -65,8 +65,8 @@ function Fifa({all, matches}) {
           match.team1 === teams._id ? 
           (
             <>
-              <h4 className='flex text1'>{teams.name}</h4>
               <img className='flex image1 flagres' for="first" src={`https://countryflagsapi.com/png/${teams.code}`} alt={teams.code} />
+              <h4 className='flex text1'>{teams.name}</h4>
             </>
           ) : ('')
           )}
