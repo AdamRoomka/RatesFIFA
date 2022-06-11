@@ -9,7 +9,7 @@ exports.getAllMatches= async (req,res)=>{
 
         res.status(200).json({
             data: {
-                teams: results
+                matches: results
             }
         });
     } catch (err) {
@@ -69,3 +69,20 @@ exports.saveMatch = async (req, res) => {
     res.send(JSON.stringify(responseBody))
     console.log('Match saved')
 };
+
+exports.getMatchById= async (req,res)=>{
+    try {
+        const results = await matchModel.findById(req.params.id);
+
+        res.status(200).json({
+            data: {
+                matches: results
+            }
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+}
