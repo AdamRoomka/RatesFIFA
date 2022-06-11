@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosFifa = axios.create({
-    baseURL: 'http://localhost:3001/api/v1/fifa',
+    baseURL: 'http://localhost:3001/api/v1/rates/teams',
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
