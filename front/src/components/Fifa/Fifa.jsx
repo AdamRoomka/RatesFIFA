@@ -1,7 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './table.css'
 
 function Fifa({all}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAddPopup = () => {
+    setIsOpen(!isOpen);
+}
   return (
     <div>
       <table>
@@ -21,6 +26,8 @@ function Fifa({all}) {
           <tr><th>Group D</th></tr>
           {all.map((groupD) => groupD.group === "D" ? (<tr><td><img src={`https://countryflagsapi.com/png/${groupD.flag}`} alt={groupD.flag} className="flagSize" />{groupD.country}</td></tr>) : (<></>))}
         </tbody>
+      </table>
+      <table>
         <tbody>
           <tr><th>Group E</th></tr>
           {all.map((groupE) => groupE.group === "E" ? (<tr><td><img src={`https://countryflagsapi.com/png/${groupE.flag}`} alt={groupE.flag} className="flagSize" />{groupE.country}</td></tr>) : (<></>))}
@@ -38,44 +45,45 @@ function Fifa({all}) {
           {all.map((groupH) => groupH.group === "H" ? (<tr><td><img src={`https://countryflagsapi.com/png/${groupH.flag}`} alt={groupH.flag} className="flagSize" />{groupH.country}</td></tr>) : (<></>))}
         </tbody>
       </table>  
-
-      <form action="/action_page.php" className='fill'>
+      <button
+          onClick={toggleAddPopup}
+          className='button_dodawania'>
+          <span>Stawki</span>
+      </button>
+    {isOpen &&
+      <form className='fill'>
 
         <label for="fname">Podaj swoje imię:</label><br />
         <input type="text" id="fname" name="firstname" />
 
         <h3>Podaj wyniki i zatwierdź:</h3>
 
-
-        <table className='I'>
-
+        
           <div className='wyniki'>
-                <h4 className='flex text1'>Senegal</h4>
-                <img className='flex image1 flagres' src={`https://countryflagsapi.com/png/sn`} alt="senegal" />
-                
-                <input className='number1' type="number"  defaultValue={0} />
-                <h2 className='vs'>:</h2>
-                <input className='number2' type="number" defaultValue={0} />
+              <h4 className='flex text1'>Senegal</h4>
+              <img className='flex image1 flagres' for="first" src={`https://countryflagsapi.com/png/sn`} alt="senegal" />
+              
+              <input className='number1' type="number" id='first'  placeholder='0' />
+              <h2 className='vs'>:</h2>
+              <input className='number2' type="number" placeholder='0' />
 
-                <img className='flex image2 flagres' src={`https://countryflagsapi.com/png/nl`} alt="Holandia" />
-                <h4 className='flex text2'>Holandia</h4>
+              <img className='flex image2 flagres' src={`https://countryflagsapi.com/png/nl`} alt="Holandia" />
+              <h4 className='flex text2'>Holandia</h4>
+          </div>
+          <div className='wyniki'>
+              <h4 className='flex text1'>Anglia</h4>
+              <img className='flex image1 flagres' for="first" src={`https://countryflagsapi.com/png/gb-eng`} alt="Anglia" />
+              
+              <input className='number1' type="number" id='first'  placeholder='0' />
+              <h2 className='vs'>:</h2>
+              <input className='number2' type="number" placeholder='0' />
 
-              {/* <tr>
-                <td><h4>Katar</h4></td>
-                <td><img src={`https://countryflagsapi.com/png/qa`} alt="Katar" className="flagres" /></td>
-                
-                <td><input type="number" defaultValue={0} /></td>
-                <td><h2>:</h2></td>
-                <td><input type="number" defaultValue={0} /></td>
-
-                <td><img src={`https://countryflagsapi.com/png/ec`} alt="Ekwador" className="flagres" /></td>
-                <td><h4>Ekwador</h4></td>
-              </tr> */}
-            </div>
-
-        </table>
-        <input type="submit" value="Zatwierdź" />
+              <img className='flex image2 flagres' src={`https://countryflagsapi.com/png/ir`} alt="Iran" />
+              <h4 className='flex text2'>Iran</h4>
+          </div>
+        <input type="submit" className='button_zatwierdz' value="Zatwierdź" />
         </form>
+        }
     </div>
 )}
 
