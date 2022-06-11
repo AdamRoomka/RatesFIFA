@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const axiosFifa = axios.create({
-    baseURL: 'http://localhost:3001/api/v1/rates/teams',
+const axiosMatches = axios.create({
+    baseURL: 'http://localhost:3001/api/v1/rates/matches',
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -9,7 +9,7 @@ const axiosFifa = axios.create({
 });
 
 
-axiosFifa.interceptors.response.use(
+axiosMatches.interceptors.response.use(
     function (response) {
         return response;
     },
@@ -20,4 +20,4 @@ axiosFifa.interceptors.response.use(
     }
 );
 
-export default axiosFifa;
+export default axiosMatches;

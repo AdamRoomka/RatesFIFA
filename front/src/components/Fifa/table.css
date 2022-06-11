@@ -116,21 +116,19 @@ h4{
   display: grid;
   grid-template-columns: 1fr 2fr 80px 15px 80px 2fr 1fr;
 }
-
+.empty{
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
 .image1{
-  grid-column-start: 2;
-  grid-column-end: 3;
   display: flex;
   justify-self: center;
   align-self: center;
 }
 .text1{
-  grid-column-start: 1;
-  grid-column-end: 2;
   font-size: 20px;
   align-self: center;
 }
-
 
 .number1{
   grid-column-start: 3;
@@ -167,9 +165,13 @@ h4{
 .wyniki{
   grid-template-columns: 2fr 80px 15px 80px 2fr;
 }
+.empty{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 5;
+}
 .image1{
-  grid-column-start: 1;
-  grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 2;
   display: flex;
@@ -201,17 +203,14 @@ h4{
   grid-row-end: 2;
   align-self: center;
 }
+
 .image2{
-  grid-column-start: 5;
-  grid-column-end: 6;
   grid-row-start: 1;
   grid-row-end: 2;
   display: flex;
   justify-self: center;
 }
 .text2{
-  grid-column-start: 5;
-  grid-column-end: 6;
   grid-row-start: 2;
   grid-row-end: 3;
   font-size: 20px;
@@ -221,9 +220,13 @@ h4{
   .wyniki{
     grid-template-columns: 1fr 15px 1fr;
   }
+  .empty{
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
   .image1{
-    grid-column-start: 1;
-    grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
     display: flex;
@@ -256,8 +259,6 @@ h4{
     justify-self: center;
   }
   .image2{
-    grid-column-start: 3;
-    grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
     display: flex;
