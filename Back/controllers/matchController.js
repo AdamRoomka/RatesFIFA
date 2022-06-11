@@ -26,16 +26,16 @@ exports.saveMatch = async (req, res) => {
     let team1=await teamModel.findById(req.body.team1)
     let team2=await teamModel.findById(req.body.team2)
 
+    responseBody={
+        status:'success',
+        message:''
+    }
     
     if(team1 === null || team2 ===null) {
         var responseBody={
             status:'fail',
             message:'Teams not found',
         }
-        res.statusCode=404
-        res.send(JSON.stringify(responseBody))
-        console.log('Teams not found')
-        return
     }
 
     if(team1===team2) {
@@ -43,10 +43,6 @@ exports.saveMatch = async (req, res) => {
             status:'fail',
             message:'Teams cant be same',
         }
-        res.statusCode=404
-        res.send(JSON.stringify(responseBody))
-        console.log('Teams are same')
-        return
     }
 
     if(req.body.time === undefined) {
@@ -54,9 +50,11 @@ exports.saveMatch = async (req, res) => {
             status:'fail',
             message:'time not definedd',
         }
-        res.statusCode=404
+    }
+
+    if(responseBody.status==='fail') {
+        console.log(responseBody.message)
         res.send(JSON.stringify(responseBody))
-        console.log('Match time not found')
         return
     }
 
