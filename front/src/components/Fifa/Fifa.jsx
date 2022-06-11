@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './table.css'
 
-function Fifa({all}) {
+function Fifa({all, matches}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAddPopup = () => {
@@ -58,29 +58,36 @@ function Fifa({all}) {
 
         <h3>Podaj wyniki i zatwierdź:</h3>
 
+        {matches.map((match) =>
+        <div className='wyniki'>
         
-          <div className='wyniki'>
-              <h4 className='flex text1'>Senegal</h4>
-              <img className='flex image1 flagres' for="first" src={`https://countryflagsapi.com/png/sn`} alt="senegal" />
-              
+          {all.map((teams) =>
+          match.team1 === teams._id ? 
+          (
+            <>
+              <h4 className='flex text1'>{teams.name}</h4>
+              <img className='flex image1 flagres' for="first" src={`https://countryflagsapi.com/png/${teams.code}`} alt={teams.code} />
+            </>
+          ) : ('')
+          )}
+              <div className="empty"></div>
               <input className='number1' type="number" id='first'  placeholder='0' />
               <h2 className='vs'>:</h2>
               <input className='number2' type="number" placeholder='0' />
 
-              <img className='flex image2 flagres' src={`https://countryflagsapi.com/png/nl`} alt="Holandia" />
-              <h4 className='flex text2'>Holandia</h4>
+          {all.map((teams) =>
+          match.team2 === teams._id ? 
+          (
+            <>
+              <h4 className='flex text1'>{teams.name}</h4>
+              <img className='flex image1 flagres' for="first" src={`https://countryflagsapi.com/png/${teams.code}`} alt={teams.code} />
+            </>
+          ) : ('')
+          )}
           </div>
-          <div className='wyniki'>
-              <h4 className='flex text1'>Anglia</h4>
-              <img className='flex image1 flagres' for="first" src={`https://countryflagsapi.com/png/gb-eng`} alt="Anglia" />
-              
-              <input className='number1' type="number" id='first'  placeholder='0' />
-              <h2 className='vs'>:</h2>
-              <input className='number2' type="number" placeholder='0' />
+        )}
 
-              <img className='flex image2 flagres' src={`https://countryflagsapi.com/png/ir`} alt="Iran" />
-              <h4 className='flex text2'>Iran</h4>
-          </div>
+
         <input type="submit" className='button_zatwierdz' value="Zatwierdź" />
         </form>
         }
