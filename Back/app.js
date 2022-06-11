@@ -1,8 +1,11 @@
 const express = require("express");
 const { get } = require("http");
 const cookieSession = require("cookie-session");
+var bodyParser = require('body-parser');
 
-const rates = require("./routes/teamRoutes");
+const teamRoutes = require("./routes/teamRoutes");
+const matchRoutes = require("./routes/matchRoutes");
+
 
 const app = express();
 var cors = require("cors");
@@ -23,8 +26,14 @@ app.use(
     httpOnly: true
   })
 );
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
-app.use("/api/v1/rates/", rates);
+app.use("/api/v1/rates/", teamRoutes);
+app.use("/api/v1/rates/", matchRoutes);
+
 
 
 module.exports = app;
