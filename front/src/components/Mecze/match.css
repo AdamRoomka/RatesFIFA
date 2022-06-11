@@ -47,3 +47,36 @@
 .searchResults{
     color: white;
 }
+.id1{
+    justify-self: center;
+    border-radius: 4%;
+    height: 200px;
+    width: 300px;
+}
+.id2{
+    justify-self: center;
+    border-radius: 4%;
+    height: 200px;
+    width: 300px;
+}
+input[type=date] {
+    height: 80px;
+    font-size: 30px;
+    border: 1px solid #ccc;
+    background-color: #3c3b3a;
+    color: #fff;
+    border-radius: 4px;
+    margin: 15px;
+    text-align: center;
+    align-self: center;
+  }
+select{
+    font-size: 30px;
+    border: 1px solid #ccc;
+    background-color: #3c3b3a;
+    color: #fff;
+    border-radius: 4px;
+    margin: 15px;
+    text-align: center;
+    height: 90px;
+}

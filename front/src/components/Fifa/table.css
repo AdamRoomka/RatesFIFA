@@ -44,7 +44,7 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-input[type=number], select {
+input[type=number] {
   max-width: 35px;
   height: 40px;
   font-size: 30px;
@@ -55,6 +55,15 @@ input[type=number], select {
   margin: 15px;
   text-align: center;
 }
+.id1{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.id2{
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
