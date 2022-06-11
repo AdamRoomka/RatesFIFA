@@ -38,6 +38,17 @@ exports.saveMatch = async (req, res) => {
         return
     }
 
+    if(team1===team2) {
+        var responseBody={
+            status:'fail',
+            message:'Teams cant be same',
+        }
+        res.statusCode=404
+        res.send(JSON.stringify(responseBody))
+        console.log('Teams are same')
+        return
+    }
+
     if(req.body.time === undefined) {
         var responseBody={
             status:'fail',
