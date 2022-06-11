@@ -7,13 +7,13 @@ const Date = {
 
 const DBSchema = mongoose.Schema(
   {
-    name: {type:String}
+    name: {type:String},
+    login: {type:String},
+    password: {type:String}
   },
   { timestamps: true }
 );
 
 const DBModel = new mongoose.model("user", DBSchema,'Users');
-
-
 
 module.exports = DBModel;
