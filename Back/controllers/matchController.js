@@ -3,6 +3,22 @@ const teamModel = require('../models/teamModel');
 
 const teamController=require('../controllers/teamController')
 
+exports.getAllMatches= async (req,res)=>{
+    try {
+        const results = await matchModel.find();
+
+        res.status(200).json({
+            data: {
+                teams: results
+            }
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err
+        });
+    }
+}
 
 exports.saveMatch = async (req, res) => {
     console.log('Match save request received')    
