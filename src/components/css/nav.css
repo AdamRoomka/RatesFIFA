@@ -1,0 +1,7 @@
+.none{
+    text-decoration: none;
+    color: rgb(9, 0, 44);
+}
+.menu ul{
+    list-style-type: none;
+}

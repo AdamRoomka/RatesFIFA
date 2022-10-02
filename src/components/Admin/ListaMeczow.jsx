@@ -1,10 +1,10 @@
 import React from 'react'
 
-function ListaMeczow({team1, team2, all}) {
+function ListaMeczow({team1, team2, allTeams}) {
   return (
     <div>
         <div className='wyniki'>
-            {all.map((teams) => 
+            {allTeams.map((teams) => 
               team1 === teams._id ? 
           (
             <>
@@ -18,7 +18,7 @@ function ListaMeczow({team1, team2, all}) {
               <h2 className='vs'>:</h2>
               <input className='number2' type="number" placeholder='0' />
 
-          {all.map((teams) => team2 === teams._id ? 
+          {allTeams.map((teams) => team2 === teams._id ? 
                 (
                   <>
                     <h4 className='flex text1'>{teams.name}</h4>
