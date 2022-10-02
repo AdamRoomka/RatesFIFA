@@ -20,6 +20,27 @@ const matchModel = require('./models/matchModel')
 const m2s = require('mongoose-to-swagger');
 const auth = require("./auth");
 
+const localtunnel = require('localtunnel');
+
+(async () => {
+  const tunnel = await localtunnel({ port: 3000,subdomain:'rates-fifa' });
+
+console.log(`front: ${tunnel.url}`);
+  tunnel.on('close', () => {
+    // tunnels are closed
+  });
+})();
+
+
+(async () => {
+  const tunnel = await localtunnel({ port: 3001,subdomain:'rates-fifa-backend' });
+
+  // the assigned public url for your tunnel
+console.log(`back: ${tunnel.url}`);
+  tunnel.on('close', () => {
+    // tunnels are closed
+  });
+})();
 
     
 
@@ -45,12 +66,12 @@ const swaggerDefinition = {
     title: 'Express API for JSONPlaceholder',
     version: '1.0.0',
   },
-  servers: [
-    {
-      url: 'https://rates-node.herokuapp.com/api/v1/rates/',
-      description: 'Development server',
-    },
-  ],
+  // servers: [
+  //   {
+  //     url: 'https://rates-node.herokuapp.com/api/v1/rates/',
+  //     description: 'Development server',
+  //   },
+  // ],
   tags:[
     {
       name:"Users"
