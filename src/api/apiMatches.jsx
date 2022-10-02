@@ -1,23 +1,28 @@
-import axios from 'axios';
+import axios from "axios";
 
+var token=''
 const axiosMatches = axios.create({
-    baseURL: 'http://localhost:3001/api/v1/rates/matches',
-    headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-    },
+  baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/",
+  headers: {
+    Accept: "application/json",
+    "Bypass-Tunnel-Reminder":"heroku",
+    "Content-Type": "application/json",
+    Authorization: `Bearer: ${token}`,
+  },
 });
 
-
 axiosMatches.interceptors.response.use(
-    function (response) {
-        return response;
-    },
-    function (error) {
-        let res = error.response;
-        console.error(res.status);
-        return Promise.reject(error);
+  function (response) {
+    return response;
+  },
+  function (error) {
+    let res = error.response;
+    if (res === undefined) {
+      console.error("API not working");
     }
+    console.log(res);
+    return Promise.reject(error);
+  }
 );
 
 export default axiosMatches;

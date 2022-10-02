@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-const axiosFifa = axios.create({
-    baseURL: 'https://rates-fifa-backend.loca.lt/api/v1/rates/teams',
+const axiosUsers = axios.create({
+    baseURL: 'https://rates-fifa-backend.loca.lt/api/v1/rates/users',
     headers: {
         Accept: "application/json",
-        // "Bypass-Tunnel-Reminder":"heroku",
+        "Bypass-Tunnel-Reminder":"heroku",
         "Content-Type": "application/json",
     },
 });
 
 
-axiosFifa.interceptors.response.use(
+axiosUsers.interceptors.response.use(
     function (response) {
         return response;
     },
@@ -23,6 +23,7 @@ axiosFifa.interceptors.response.use(
         // console.error(res.status);
         return Promise.reject(error);
     }
+
 );
 
-export default axiosFifa;
+export default axiosUsers;
