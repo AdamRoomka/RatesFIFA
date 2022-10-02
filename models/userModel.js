@@ -10,7 +10,9 @@ const DBSchema = mongoose.Schema(
     name: {type:String},
     login: {type:String},
     password: {type:String},
-    score: {type:Number,default:0}
+    score: {type:Number,default:0},
+    role: {type:String,default:"user"},
+    token: { type: String }
   },
   { timestamps: true }
 );

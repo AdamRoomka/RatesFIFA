@@ -7,11 +7,10 @@ const Date = {
 
 const DBSchema = mongoose.Schema(
   {
-    matchId: {type: Schema.Types.ObjectId, ref: 'match'},
-    userId: {type: Schema.Types.ObjectId, ref: 'user'},
+    matchId: {type: mongoose.Schema.Types.ObjectId, ref: 'match'},
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
     score1: {type:Number},
-    score2:{type:Number},
-    accepted{type:Boolean,default:false}
+    score2: {type:Number}
   },
   { timestamps: true }
 );
