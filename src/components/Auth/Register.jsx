@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import swal from "sweetalert";
 import { useForm } from "react-hook-form";
-import { createUser } from "../../api/lib/UsersAPI";
+import { createUser } from "../../api/lib/UsersApi";
 import { Link } from "react-router-dom";
 import "../css/auth.css";
 

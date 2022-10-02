@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { doLogin } from "../../api/lib/UsersAPI";
+import { doLogin } from "../../api/lib/UsersApi";
 import { Link, Navigate } from "react-router-dom";
 import swal from "sweetalert";
 import "../css/auth.css";
