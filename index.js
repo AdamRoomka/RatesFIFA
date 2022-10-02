@@ -1,6 +1,6 @@
 require("dotenv").config();
 const { get } = require("http");
-const cool = require('cool-ascii-faces');
+
 const teamRoutes = require("./routes/teamRoutes");
 const matchRoutes = require("./routes/matchRoutes");
 const userRoutes = require("./routes/userRoutes");
