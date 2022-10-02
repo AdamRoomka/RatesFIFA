@@ -10,7 +10,7 @@ import Navigation from "./components/Navigation/Navigation";
 // import Stawki from "./components/Fifa/Stawki/Stawki";
 import { getAllTeams } from "./api/lib/FifaAPI";
 import { getAllMatches, getAllMatchesGroup, getAllMatchesPlayoff } from "./api/lib/MatchesAPI";
-import { getAllUsers } from "./api/lib/UsersAPI";
+import { getAllUsers } from "./api/lib/UsersApi";
 
 function App() {
   const [allTeams, setAllTeams] = useState([]);
