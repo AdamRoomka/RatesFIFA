@@ -13,17 +13,17 @@ export async function getAllUsers(token) {
     }).get('/')
     return res;
 }
-// export async function updatePassword(token, subId, data) {
-//     const res = await axios.create({
-//         baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/users",
-//         headers: {
-//             Accept: "application/json",
-//             "Content-Type": "application/json",
-//             Authorization: `Bearer: ${token}`,
-//         },
-//     }).post(`/${subId}`, JSON.stringify(data))
-//     return res;
-// }
+export async function updatePassword(token, subId, data) {
+    const res = await axios.create({
+        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/users",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer: ${token}`,
+        },
+    }).post(`/${subId}`, JSON.stringify(data))
+    return res;
+}
 
 // export async function getUserAdmin(token) {
 //     const res = await axios.create({

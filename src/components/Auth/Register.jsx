@@ -11,7 +11,7 @@ function Register() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    //formState: { errors },
   } = useForm();
 
   useEffect(() => {

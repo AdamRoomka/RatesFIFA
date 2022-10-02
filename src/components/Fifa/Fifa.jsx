@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import LoadingIcons from "react-loading-icons";
 import Tabela from "./Tabela";
 import "../css/table.css";
 
 function Fifa({ allTeams, user, loading }) {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   let position = 1;
   const groups = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -14,48 +14,50 @@ function Fifa({ allTeams, user, loading }) {
     }
   }, []);
 
-  const toggleAddPopup = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleAddPopup = () => {
+  //   setIsOpen(!isOpen);
+  // };
   return (
     <div className="container">
       <title>Fifa World Cup 2022</title>
       <table id="tabelaGrup" className="row mt-2 d-flex justify-content-center">
         {groups.map((groupName) => (
-          <tbody className="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 hover justify-content-center mb-1">
-            <tr className="border border-dark">
-              <th>Group {groupName}</th>
-              <th>W/D/L</th>
-              <th>Pts.</th>
-            </tr>
-
-            {!loading ? (
-              allTeams.map((team) =>
-                team.group === groupName ? (
-                  <tr className="border border-dark">
-                    <>
-                      <td className="w-100 height">
-                        <img
-                          src={`https://countryflagsapi.com/png/${team.code}`}
-                          alt={team.code}
-                          className="flagSize me-1"
-                        />
-                        {team.name}
-                      </td>
-                      <td>{team.win + "/" + team.draw + "/" + team.lose}</td>
-                      <td>{team.score}</td>
-                    </>
-                  </tr>
-                ) : (
-                  <></>
-                )
-              )
-            ) : (
-              <tr className="spinner-container">
-                <td className="loading-spinner">Loading..</td>
+          <React.Fragment key={groupName}>
+            <tbody className="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 hover justify-content-center mb-1">
+              <tr className="border border-dark">
+                <th>Group {groupName}</th>
+                <th>W/D/L</th>
+                <th>Pts.</th>
               </tr>
-            )}
-          </tbody>
+
+              {!loading ? (
+                allTeams.map((team) =>
+                  team.group === groupName ? (
+                    <tr className="border border-dark">
+                      <>
+                        <td className="w-100 height">
+                          <img
+                            src={`https://countryflagsapi.com/png/${team.code}`}
+                            alt={team.code}
+                            className="flagSize me-1"
+                          />
+                          {team.name}
+                        </td>
+                        <td>{team.win + "/" + team.draw + "/" + team.lose}</td>
+                        <td>{team.score}</td>
+                      </>
+                    </tr>
+                  ) : (
+                    <></>
+                  )
+                )
+              ) : (
+                <tr className="spinner-container">
+                  <td className="loading-spinner">Loading..</td>
+                </tr>
+              )}
+            </tbody>
+          </React.Fragment>
         ))}
       </table>
 

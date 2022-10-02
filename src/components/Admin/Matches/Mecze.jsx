@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import './match.css';
-import { saveMatch } from "../../api/lib/MatchesAPI";
+import { saveMatch } from "../../../api/lib/MatchesAPI";
 import ListaMeczow from './ListaMeczow';
 function Mecze({allTeams, matches, render, setRender}) {
 
@@ -28,7 +28,7 @@ function Mecze({allTeams, matches, render, setRender}) {
         await saveMatch(data).then(() => { setRender(!render) })
 }
 
-
+console.log("do zrobienia: " + time)
 
   return (
     <>

@@ -5,8 +5,8 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import "../css/nav.css";
 
-function Navigation() {
-  const [currentUser, setcurrentUser] = useState([]);
+function Navigation({role}) {
+  // const [currentUser, setcurrentUser] = useState([]);
   const [render, setRender] = useState(false);
   const [navigacja, setNavigation] = useState(true);
   useEffect(() => {
@@ -128,7 +128,7 @@ function Navigation() {
               Stawki
             </Link>
           </li>
-          {currentUser.role === "admin" ? (
+          {role === "admin" ? (
             <li>
               <Dropdown as={ButtonGroup}>
                 <Link to="/admin" className="none me-1 my-0 pb-2">
@@ -140,12 +140,12 @@ function Navigation() {
                   className="none me-3 pb-2"
                 />
                 <Dropdown.Menu>
-                  <Link className="none p-3 fs-5" to="/admin/categories">
-                    Categories
+                  <Link className="none p-3 fs-5" to="/admin/matches">
+                    Mecze
                   </Link>
-                  <Link className="none p-3 fs-5" to="/admin/history">
+                  {/* <Link className="none p-3 fs-5" to="/admin/history">
                     History
-                  </Link>
+                  </Link> */}
                   <Link className="none p-3 fs-5" to="/admin/users">
                     Users
                   </Link>
