@@ -99,14 +99,6 @@ swaggerSpec.definitions={
 
 express()
 .use(allowCrossDomain)
-.use(bodyParser.urlencoded({
-  extended: true
-}))
-.use(bodyParser.json())
-.use("/api/v1/rates/", teamRoutes)
-.use("/api/v1/rates/", matchRoutes)
-.use("/api/v1/rates/", userRoutes)
-.use("/api/v1/rates/", guessRoutes)
 .use(cors())
 .use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")
@@ -123,6 +115,15 @@ express()
   }
   next()
 })
+.use(bodyParser.urlencoded({
+  extended: true
+}))
+.use(bodyParser.json())
+.use("/api/v1/rates/", teamRoutes)
+.use("/api/v1/rates/", matchRoutes)
+.use("/api/v1/rates/", userRoutes)
+.use("/api/v1/rates/", guessRoutes)
+
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
