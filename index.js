@@ -22,25 +22,25 @@ const auth = require("./auth");
 
 const localtunnel = require('localtunnel');
 
-(async () => {
-  const tunnel = await localtunnel({ port: 3000,subdomain:'rates-fifa' });
+// (async () => {
+//   const tunnel = await localtunnel({ port: 3000,subdomain:'rates-fifa' });
 
-console.log(`front: ${tunnel.url}`);
-  tunnel.on('close', () => {
-    // tunnels are closed
-  });
-})();
+// console.log(`front: ${tunnel.url}`);
+//   tunnel.on('close', () => {
+//     // tunnels are closed
+//   });
+// })();
 
 
-(async () => {
-  const tunnel = await localtunnel({ port: 5002,subdomain:'rates-fifa-backend' });
+// (async () => {
+//   const tunnel = await localtunnel({ port: 5002,subdomain:'rates-fifa-backend' });
 
-  // the assigned public url for your tunnel
-console.log(`back: ${tunnel.url}`);
-  tunnel.on('close', () => {
-    // tunnels are closed
-  });
-})();
+//   // the assigned public url for your tunnel
+// console.log(`back: ${tunnel.url}`);
+//   tunnel.on('close', () => {
+//     // tunnels are closed
+//   });
+// })();
 
     
 
