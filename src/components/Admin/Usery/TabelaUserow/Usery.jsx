@@ -4,11 +4,17 @@ import "./tabelaUserow.css";
   //Users
 function Usery({ data, name, login, role, position, score, editId,  subId, handleEdit, onCancel, onSubmit}) {
   const [password, setPassword] = useState(data.value)
+
   const editFlows = () => {
+    var token = null;
+    if (typeof window !== "undefined") {
+      token = window.localStorage.getItem("token");
+    }
     let pass = {
         password: password,
     };
-    onSubmit(subId, pass, data)
+    onSubmit(token, subId, pass)
+    console.log(token, subId, pass)
   }
   return (
     <>

@@ -66,7 +66,7 @@ function Fifa({ allTeams, user, loading }) {
           <tbody>
             <tr>
               <th></th>
-              <th>Członkowie</th>
+              <th id='pierwsza'>Członkowie</th>
               <th>Punkty</th>
             </tr>
             {user.map((user) =>
