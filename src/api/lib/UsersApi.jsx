@@ -9,6 +9,8 @@ export async function getAllUsers(token) {
             Accept: "application/json",
             "Content-Type": "application/json",
             Authorization: `Bearer: ${token}`,
+            "User-Agent":"PostmanRuntime/7.26.5",
+            "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
         },
     }).get('/')
     return res;

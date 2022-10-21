@@ -114,6 +114,7 @@ express()
       "Access-Control-Allow-Methods",
       "POST, PUT, PATCH, GET, DELETE"
     )
+    res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki');
     return res.status(200).json({})
   }
   next()
