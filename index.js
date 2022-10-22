@@ -101,24 +101,24 @@ swaggerSpec.definitions={
 express()
 .use(allowCrossDomain)
 .use(cors())
-.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested, Content-Type, Accept Authorization"
+// .use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*")
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested, Content-Type, Accept Authorization"
     
-  )
-  res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki')
-  if (req.method === "OPTIONS") {
-    res.header(
-      "Access-Control-Allow-Methods",
-      "POST, PUT, PATCH, GET, DELETE"
-    )
-    res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki');
-    return res.status(200).json({})
-  }
-  next()
-})
+//   )
+//   res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki')
+//   if (req.method === "OPTIONS") {
+//     res.header(
+//       "Access-Control-Allow-Methods",
+//       "POST, PUT, PATCH, GET, DELETE"
+//     )
+//     res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki');
+//     return res.status(200).json({})
+//   }
+//   next()
+// })
 .use(bodyParser.urlencoded({
   extended: true
 }))
