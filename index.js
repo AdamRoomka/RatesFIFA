@@ -46,61 +46,25 @@ console.log(`back: ${tunnel.url}`);
 
 var app = express();
 
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki');
-  res.header('Referer', 'https://rates-fifa.loca.lt/')
-  if ('OPTIONS' == req.method) {
-    res.sendStatus(200);
-  }
-  else {
-    next();
-  }
-};
+// var allowCrossDomain = function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+//   res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki');
+//   if ('OPTIONS' == req.method) {
+//     res.sendStatus(200);
+//   }
+//   else {
+//     next();
+//   }
+// };
 
-
-const swaggerDefinition = {
-  openapi: '3.0.0',
-  info: {
-    title: 'Express API for JSONPlaceholder',
-    version: '1.0.0',
-  },
-  // servers: [
-  //   {
-  //     url: 'https://rates-node.herokuapp.com/api/v1/rates/',
-  //     description: 'Development server',
-  //   },
-  // ],
-  tags:[
-    {
-      name:"Users"
-    },
-    {
-      name: "Teams"
-    },
-    {
-      name: "Matches"
-    }
-  ]
-};
-
-const options = {
-  swaggerDefinition,
-  apis: ['./routes/*.js'],
-};
-
-const swaggerSpec = swaggerJSDoc(options);
-swaggerSpec.definitions={
-  User: m2s(userModel),
-  Team: m2s(teamModel),
-  Match: m2s(matchModel)
-}
 
 express()
-.use(allowCrossDomain)
-.use(cors())
+// .use(allowCrossDomain)
+.use(cors({
+  origin:'https://rates-fifa.loca.lt/'
+}))
 // .use((req, res, next) => {
 //   res.header("Access-Control-Allow-Origin", "*")
 //   res.header(
@@ -131,7 +95,6 @@ express()
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
-.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 // .post("*",auth)
 // .get("/",auth)
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
