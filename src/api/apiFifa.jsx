@@ -4,7 +4,7 @@ const axiosFifa = axios.create({
     baseURL: 'https://rates-fifa-backend.loca.lt/api/v1/rates/teams',
     headers: {
         Accept: "application/json",
-        // "Bypass-Tunnel-Reminder":"heroku",
+        "Bypass-Tunnel-Reminder":"AdamPrzegraStawki",
         "Content-Type": "application/json",
     },
 });

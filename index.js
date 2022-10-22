@@ -53,7 +53,7 @@ var allowCrossDomain = function(req, res, next) {
   res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki');
   res.header('Referer', 'https://rates-fifa.loca.lt/')
   if ('OPTIONS' == req.method) {
-    res.send(200);
+    res.sendStatus(200);
   }
   else {
     next();
