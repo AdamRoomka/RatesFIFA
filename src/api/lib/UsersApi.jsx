@@ -7,7 +7,7 @@ export async function getAllUsers(token) {
         baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/users",
         headers: {
             Accept: "application/json",
-            "Access-Control-Allow-Origin": "*",
+            "access-control-allow-origin": "*",
             "Content-Type": "application/json",
             Authorization: `Bearer: ${token}`,
             "Bypass-Tunnel-Reminder":"AdamPrzegraStawki",

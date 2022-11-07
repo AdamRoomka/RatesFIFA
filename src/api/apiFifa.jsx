@@ -5,6 +5,7 @@ const axiosFifa = axios.create({
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "access-control-allow-origin": "*",
         "Bypass-Tunnel-Reminder":"AdamPrzegraStawki",
     },
 });

@@ -33,6 +33,7 @@ export async function getAllMatches(token) {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer: ${token}`,
+          "access-control-allow-origin": "*",
           "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
         },
       }).get('/matches');
