@@ -2,9 +2,9 @@ const teams = require('../models/teamModel');
 
 exports.getAllTeams = async (req, res) => {
     try {
+        res.setHeader('Access-Control-Allow-Origin', '*')
         console.log("GET /teams")
         const results = await teams.find().sort({'score':'desc'});
-        res.setHeader('Access-Control-Allow-Origin', '*')
         console.log("Teams found")
 
         res.status(200).json({

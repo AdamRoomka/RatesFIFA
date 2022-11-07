@@ -9,6 +9,7 @@ export async function getAllMatchesGroup(token) {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer: ${token}`,
+          "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
         },
       }).get('/matches?type=group_stage');
     return res;
@@ -20,6 +21,7 @@ export async function getAllMatchesPlayoff(token) {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer: ${token}`,
+          "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
         },
       }).get('/matches?type=play-off');
     return res;
@@ -31,6 +33,7 @@ export async function getAllMatches(token) {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer: ${token}`,
+          "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
         },
       }).get('/matches');
     return res;

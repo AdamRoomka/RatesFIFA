@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 
 exports.getAllUsers = async (req,res)=>{
+        res.setHeader('Access-Control-Allow-Origin', '*')
     try {
         if(req.header('authorization')=== undefined) {
             res.status(400).json({ message: "Wrong user token",status:'fail',code:'WRONG_USER_TOKEN'});
