@@ -9,7 +9,6 @@ export async function getAllMatchesGroup(token) {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer: ${token}`,
-          "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
         },
       }).get('/matches?type=group_stage');
     return res;
@@ -21,22 +20,20 @@ export async function getAllMatchesPlayoff(token) {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer: ${token}`,
-          "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
         },
       }).get('/matches?type=play-off');
     return res;
 }
 export async function getAllMatches(token) {
     const res = await axios.create({
-        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/",
+        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/matches",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: `Bearer: ${token}`,
-          "access-control-allow-origin": "*",
-          "Bypass-Tunnel-Reminder":"AdamPrzegraStawki"
+          "Access-Control-Allow-Origin": "*"
         },
-      }).get('/matches');
+      }).get('/');
     return res;
 }
 

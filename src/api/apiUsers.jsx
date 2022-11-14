@@ -4,7 +4,6 @@ const axiosUsers = axios.create({
     baseURL: 'https://rates-fifa-backend.loca.lt/api/v1/rates/users',
     headers: {
         Accept: "application/json",
-        "Bypass-Tunnel-Reminder":"AdamPrzegraStawki",
         "Content-Type": "application/json",
     },
 });

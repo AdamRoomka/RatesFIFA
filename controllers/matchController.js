@@ -9,7 +9,7 @@ const {calculateTeamPoints} = require ('../scripts/teamPointsCalculator')
 
 exports.getAllMatches= async (req,res)=>{
     try {
-
+        console.log("GET /matches")
         if(req.header('authorization')!== undefined) {
             console.log("authorization defined")
             const token=req.header('authorization').split(" ")[1]
@@ -178,7 +178,7 @@ exports.updateMatch = async (req, res) => {
     }
 
     res.statusCode=201
-    res.setHeader('Access-Control-Allow-Origin', '*')
+    // res.setHeader('Access-Control-Allow-Origin', '*')
     res.send(JSON.stringify(responseBody))
     console.log('Match updated: '+match._id)
 }
@@ -186,7 +186,7 @@ exports.updateMatch = async (req, res) => {
 exports.getMatchById= async (req,res)=>{
     try {
         var results = await matchModel.findById(req.params.id).populate('team1').populate("team2");;
-        res.setHeader('Access-Control-Allow-Origin', '*')
+        // res.setHeader('Access-Control-Allow-Origin', '*')
         res.status(200).json({
             data: {
                 matches: results

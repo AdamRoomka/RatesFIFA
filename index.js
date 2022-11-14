@@ -5,6 +5,7 @@ const teamRoutes = require("./routes/teamRoutes");
 const matchRoutes = require("./routes/matchRoutes");
 const userRoutes = require("./routes/userRoutes");
 const guessRoutes = require("./routes/guessRoutes");
+
 const express = require('express')
 require("./DBconnection");
 const path = require('path')
@@ -24,8 +25,6 @@ console.log(`front: ${tunnel.url}`);
     // tunnels are closed
   });
 })();
-
-
 (async () => {
   const tunnel = await localtunnel({ port: 5002,subdomain:'rates-fifa-backend' });
 
@@ -40,31 +39,23 @@ console.log(`back: ${tunnel.url}`);
 
 var app = express();
 
-var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-}
 
 express()
-// .use(allowCrossDomain)
 .use(cors({
   origin:'https://rates-fifa.loca.lt/'
 }))
 .use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*")
+  res.header("access-control-allow-origin", "*")
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested, Content-Type, Accept Authorization"
-    
   )
-  // res.header('Bypass-Tunnel-Reminder','AdamPrzegraStawki')
   if (req.method === "OPTIONS") {
+    res.header("access-control-allow-origin", "*")
     res.header(
       "Access-Control-Allow-Methods",
       "POST, PUT, PATCH, GET, DELETE"
     )
-    // res.header("Bypass-Tunnell-Reminder", "AdamPrzegraStawki");
     return res.status(200).json({})
   }
   next()

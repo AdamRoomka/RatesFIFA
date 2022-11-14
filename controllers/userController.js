@@ -4,18 +4,21 @@ const jwt = require("jsonwebtoken");
 
 
 exports.getAllUsers = async (req,res)=>{
-        res.setHeader('Access-Control-Allow-Origin', '*')
+        console.log("GET /users")
     try {
         if(req.header('authorization')=== undefined) {
             res.status(400).json({ message: "Wrong user token",status:'fail',code:'WRONG_USER_TOKEN'});
             return
         }
+        console.log("authorization defined")
         const token=req.header('authorization').split(" ")[1]
+        console.log("token received")
         
         var currentUser=await userModel.findOne({token:token})
         var selectColumnsFromUserTable="name score -_id"
         if(currentUser.role==="admin") {
             selectColumnsFromUserTable="-token -password"
+            console.log("user found")
         }
 
         var results = await userModel.find().select(selectColumnsFromUserTable).sort({'score':'desc'});

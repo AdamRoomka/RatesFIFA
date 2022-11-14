@@ -77,6 +77,18 @@ function Register() {
         </div> */}
 
         <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          {...register("email", {
+            required: true,
+            minLength: 2,
+            maxLength: 30,
+            pattern: /^[[^A-Za-ząčęėįšųūžĄČĘĖĮŠŲŪŽ]*$/i,
+          })}
+        />
+        
+        <input
           type="text"
           name="login"
           placeholder="Login"
