@@ -1,11 +1,12 @@
 import * as React from "react";
+import Rez from "./Additional/Rez";
 import Match from "./Additional/Match";
 import { useState } from "react";
 import "../../css/table.css";
 import { saveGuess } from "../../../api/lib/GuessApi";
 
 // Stawki
-function Group_stage({matchesGr}) {
+function Group_stage({ matchesGr }) {
   const [success, setSuccess] = useState(false);
   const [guesses] = useState([]);
 
@@ -53,38 +54,74 @@ function Group_stage({matchesGr}) {
       setSuccess(true);
     });
   }
+
+  let date = new Date();
+  date.setDate(date.getDate() - 7);
+  date.setMinutes(date.getMinutes() + 10);
+  let today = date.getTime();
+  today = Math.floor(today / 1000);
+
   return (
     <div>
-        <div className="fill" id="matches">
-          <h3>Podaj wyniki i zatwierdź:</h3>
-
-          {matchesGr &&
-          matchesGr.map((match) => (
-            <Match
-              key={match._id}
-              name1={match.team1.name}
-              name2={match.team2.name}
-              code1={match.team1.code}
-              code2={match.team2.code}
-              date={match.date}
-              time={match.time}
-              matchId={match._id}
-              data={match}
-              passScore={getScore}
-              guess1={match.currentUserGuess === undefined ? ('') : (match.currentUserGuess.score1)}
-              guess2={match.currentUserGuess === undefined ? ('') : (match.currentUserGuess.score2)}
-            />
-          ))}
-          <div className="d-flex">
-            <input
-              type="submit"
-              className="button_zatwierdz"
-              value="Zatwierdź"
-              onClick={onSubmit}
-            />
-            {success && <div className="d-flex align-items-center text-success">*rezultaty wysłane</div>}
-          </div>
+      <div className="fill" id="matches">
+        {matchesGr &&
+          matchesGr.map((match) =>
+            today >= match.due ? (
+              <>
+                <div className="m-2">
+                  <Rez
+                    key={match._id}
+                    name1={match.team1.name}
+                    name2={match.team2.name}
+                    score1={match.score1}
+                    score2={match.score2}
+                    code1={match.team1.code}
+                    code2={match.team2.code}
+                    guesses={match.guesses}
+                    data={match.date}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <Match
+                  name1={match.team1.name}
+                  name2={match.team2.name}
+                  code1={match.team1.code}
+                  code2={match.team2.code}
+                  date={match.date}
+                  time={match.time}
+                  matchId={match._id}
+                  data={match}
+                  passScore={getScore}
+                  guess1={
+                    match.currentUserGuess === undefined
+                      ? ""
+                      : match.currentUserGuess.score1
+                  }
+                  guess2={
+                    match.currentUserGuess === undefined
+                      ? ""
+                      : match.currentUserGuess.score2
+                  }
+                />
+              </>
+            )
+          )}
+        <div className="d-flex">
+          <input
+            type="submit"
+            className="button_zatwierdz"
+            value="Zatwierdź"
+            onClick={onSubmit}
+          />
+          {success && (
+            <div className="d-flex align-items-center text-success">
+              *rezultaty wysłane
+            </div>
+          )}
         </div>
+      </div>
     </div>
   );
 }
