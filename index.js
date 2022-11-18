@@ -7,10 +7,10 @@ const userRoutes = require("./routes/userRoutes");
 const guessRoutes = require("./routes/guessRoutes");
 
 const express = require('express')
+var cors = require("cors")
 require("./DBconnection");
 const path = require('path')
 var bodyParser = require('body-parser');
-var cors = require("cors")
 const PORT = process.env.PORT || 5002
 const m2s = require('mongoose-to-swagger');
 const auth = require("./auth");
@@ -39,23 +39,24 @@ console.log(`back: ${tunnel.url}`);
 
 var app = express();
 
-
 express()
-.use(cors({
-  origin:'https://rates-fifa.loca.lt/'
-}))
+// .use(cors({
+//   origin:'https://rates-fifa.loca.lt/'
+// }))
 .use((req, res, next) => {
-  res.header("access-control-allow-origin", "*")
+  res.header("Access-Control-Allow-Origin", "*")
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested, Content-Type, Accept Authorization"
+    "Origin, X-Requested, Content-Type, Accept, Authorization"
   )
+  
   if (req.method === "OPTIONS") {
-    res.header("access-control-allow-origin", "*")
+    res.header("Access-Control-Allow-Origin", "*")
     res.header(
       "Access-Control-Allow-Methods",
-      "POST, PUT, PATCH, GET, DELETE"
+      "POST, PUT, PATCH, GET, DELETE, OPTIONS"
     )
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     return res.status(200).json({})
   }
   next()

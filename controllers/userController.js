@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 
 exports.getAllUsers = async (req,res)=>{
+        res.setHeader('Access-Control-Allow-Origin', '*')
         console.log("GET /users")
     try {
         if(req.header('authorization')=== undefined) {

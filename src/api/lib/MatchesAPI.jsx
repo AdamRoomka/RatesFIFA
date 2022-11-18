@@ -26,14 +26,13 @@ export async function getAllMatchesPlayoff(token) {
 }
 export async function getAllMatches(token) {
     const res = await axios.create({
-        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/matches",
+        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: `Bearer: ${token}`,
-          "Access-Control-Allow-Origin": "*"
+          Authorization: `Bearer: ${token}`
         },
-      }).get('/');
+      }).get('matches/');
     return res;
 }
 

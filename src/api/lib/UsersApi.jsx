@@ -8,6 +8,7 @@ export async function getAllUsers(token) {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
+            // "Access-Control-Allow-Origin": "*",
             Authorization: `Bearer: ${token}`,
         },
     }).get('/')
@@ -19,7 +20,7 @@ export async function updatePassword(token, subId, pass) {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `Bearer: ${token}`,
+            Authorization: `Bearer: ${token}`
         },
     }).post(`/${subId}`, JSON.stringify(pass))
     return res;
