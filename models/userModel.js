@@ -8,7 +8,6 @@ const Date = {
 const DBSchema = mongoose.Schema(
   {
     name: {type:String},
-    email: {typeString},
     login: {type:String},
     password: {type:String},
     score: {type:Number,default:0},
