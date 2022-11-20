@@ -5,7 +5,6 @@ const teamRoutes = require("./routes/teamRoutes");
 const matchRoutes = require("./routes/matchRoutes");
 const userRoutes = require("./routes/userRoutes");
 const guessRoutes = require("./routes/guessRoutes");
-const continueRoutes = require("./routes/continueRoutes");
 
 const express = require('express')
 var cors = require("cors")
@@ -70,7 +69,6 @@ express()
 .use("/api/v1/rates/", matchRoutes)
 .use("/api/v1/rates/", userRoutes)
 .use("/api/v1/rates/", guessRoutes)
-.use("/api/v1/continue/", continueRoutes)
 
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
