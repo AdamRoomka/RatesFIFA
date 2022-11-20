@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosFifa = axios.create({
-    baseURL: 'https://rates-fifa-backend.loca.lt/api/v1/rates/teams',
+    baseURL: 'https://fifa-rates-backend.loca.lt/api/v1/rates/teams',
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json"

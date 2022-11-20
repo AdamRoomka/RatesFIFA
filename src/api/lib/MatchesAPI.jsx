@@ -4,7 +4,7 @@ import axios from "axios";
 
 export async function getAllMatchesGroup(token) {
     const res = await axios.create({
-        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/",
+        baseURL: "https://fifa-rates-backend.loca.lt/api/v1/rates/",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export async function getAllMatchesGroup(token) {
 }
 export async function getAllMatchesPlayoff(token) {
     const res = await axios.create({
-        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/",
+        baseURL: "https://fifa-rates-backend.loca.lt/api/v1/rates/",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -26,7 +26,7 @@ export async function getAllMatchesPlayoff(token) {
 }
 export async function getAllMatches(token) {
     const res = await axios.create({
-        baseURL: "https://rates-fifa-backend.loca.lt/api/v1/rates/",
+        baseURL: "https://fifa-rates-backend.loca.lt/api/v1/rates/",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

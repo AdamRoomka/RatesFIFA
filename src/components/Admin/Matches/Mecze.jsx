@@ -25,7 +25,7 @@ function Mecze({ allTeams, matches, render, setRender }) {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
     };
-    fetch("https://rates-fifa-backend.loca.lt/api/v1/rates/matches/", postToMatches);
+    fetch("https://fifa-rates-backend.loca.lt/api/v1/rates/matches/", postToMatches);
 
     await saveMatch(data).then(() => {
       setRender(!render);

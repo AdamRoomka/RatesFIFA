@@ -26,7 +26,7 @@ console.log(`front: ${tunnel.url}`);
   });
 })();
 (async () => {
-  const tunnel = await localtunnel({ port: 5002,subdomain:'rates-fifa-backend' });
+  const tunnel = await localtunnel({ port: 5002,subdomain:'fifa-rates-backend' });
 
   // the assigned public url for your tunnel
 console.log(`back: ${tunnel.url}`);
