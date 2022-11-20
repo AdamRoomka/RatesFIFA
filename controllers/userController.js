@@ -35,7 +35,7 @@ exports.getAllUsers = async (req,res)=>{
 }
 
 exports.createUser = async (req, res) => {
-    console.log(process.env.TOKEN_KEY)
+    
     console.log('User save request received')
     res.setHeader('Access-Control-Allow-Origin', '*')
     
@@ -77,6 +77,8 @@ exports.createUser = async (req, res) => {
     }
     
     user = await userModel.create(newUserObject);
+    
+
 
     const token = await jwt.sign(
         { role: user.role, login: req.body.login },
