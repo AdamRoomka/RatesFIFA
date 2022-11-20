@@ -45,6 +45,12 @@ exports.createUser = async (req, res) => {
         return
     }
 
+    if(req.body.email === undefined) {
+        res.status(400).json({ message: "Email not defined",status:'fail',code:'EMAIL_NOT_DEFINED'});
+        console.log('Email not defined')
+        return
+    }
+
     if(req.body.login === undefined) {
         res.status(400).json({status:'fail',code: 'LOGIN_NOT_DEFINED',message:'login not defined'});
         console.log('Login not defined')
@@ -62,6 +68,7 @@ exports.createUser = async (req, res) => {
     var newUserObject={
         login: req.body.login,
         name: req.body.name,
+        email: req.body.email,
         password: password
     }
 
