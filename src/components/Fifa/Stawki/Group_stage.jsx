@@ -61,6 +61,8 @@ function Group_stage({ matchesGr }) {
   let today = date.getTime();
   today = Math.floor(today / 1000);
 
+  console.log(matchesGr)
+
   return (
     <div>
       <div className="fill" id="matches">

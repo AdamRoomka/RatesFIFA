@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import LoadingIcons from "react-loading-icons";
 import Tabela from "./Tabela";
 import "../css/table.css";
+import "../css/spinner.css";
 
 function Fifa({ allTeams, user, loading }) {
   // const [isOpen, setIsOpen] = useState(false);

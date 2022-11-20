@@ -1,64 +1,73 @@
-.margin{
+.margin {
     padding: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
-.Text1{
+
+.Text1 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
     justify-self: center;
 }
-.Text2{
+
+.Text2 {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
     justify-self: center;
 }
-.Text3{
+
+.Text3 {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
     justify-self: center;
 }
-.Team1{
+
+.Team1 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 3;
 }
-.Team2{
+
+.Team2 {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
 }
-.data{
+
+.data {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
 }
 
-.searchResults{
+.searchResults {
     color: white;
 }
-.id1{
+
+.id1 {
     justify-self: center;
     border-radius: 4%;
     height: 200px;
     width: 300px;
 }
-.id2{
+
+.id2 {
     justify-self: center;
     border-radius: 4%;
     height: 200px;
     width: 300px;
 }
+
 input[type=date] {
     height: 80px;
     font-size: 30px;
@@ -69,8 +78,9 @@ input[type=date] {
     margin: 15px;
     text-align: center;
     align-self: center;
-  }
-select{
+}
+
+select {
     font-size: 30px;
     border: 1px solid #ccc;
     background-color: #3c3b3a;
@@ -80,19 +90,110 @@ select{
     text-align: center;
     height: 90px;
 }
-.pozycja{
+
+.pozycja {
     grid-column-start: 3;
     grid-column-end: 6;
 }
-@media (max-width:820px){
-    .pozycja{
+
+.timeAd {
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+.dateAd {
+    grid-column-start: 3;
+    grid-column-end: 6;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+.btnEdit {
+  grid-column-start: 3;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #d3bc07;
+  align-self: center;
+  font-size: 700;
+  color: white;
+}
+.btnDelete {
+    grid-column-start: 3;
+  grid-column-end: 6;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: #d30707;
+    align-self: center;
+    font-size: 700;
+    color: white;
+}
+
+@media (max-width:820px) {
+    .pozycja {
         grid-column-start: 2;
         grid-column-end: 5;
     }
+
+    .timeAd {
+        grid-column-start: 2;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    .dateAd {
+        grid-column-start: 2;
+        grid-column-end: 5;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+    .btnEdit {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+    .btnDelete {
+        grid-column-start: 4;
+        grid-column-end: 6;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
 }
-@media (max-width:425px){
-    .pozycja{
+
+@media (max-width:425px) {
+    .pozycja {
         grid-column-start: 1;
         grid-column-end: 4;
+    }
+    .timeAd {
+        grid-column-start: 1;
+        grid-column-end: 4;
+        grid-row-start: 3;
+        grid-row-end: 4;
+    }
+    .dateAd {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 5;
+    }
+    .btnEdit {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 5;
+    }
+    .btnDelete {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 4;
+        grid-row-end: 5;
     }
 }

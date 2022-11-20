@@ -1,29 +1,12 @@
 import * as React from "react";
-import Rez from "./Additional/Rez";
 
 // Index
-function Group_stage_bets({matchesGr}) {    
+function Group_stage_bets() {
   return (
     <div>
-        <div className="container-fluid">
-          <h3>Rezultaty wszystkich użytkowników:</h3>
-          <div className="m-2">
-          {matchesGr &&
-          matchesGr.map((rez) => (
-            <Rez
-              key={rez._id}
-              name1={rez.team1.name}
-              name2={rez.team2.name}
-              score1={rez.score1}
-              score2={rez.score2}
-              code1={rez.team1.code}
-              code2={rez.team2.code}
-              guesses={rez.guesses}
-              data={rez.date}
-            />
-          ))}
-          </div>
-        </div>
+      <div className="container-fluid d-flex spinner-container justify-content-center mt-5 pt-5">
+          <p className="loading-spinner"></p>
+      </div>
     </div>
   );
 }

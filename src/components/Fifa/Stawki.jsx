@@ -11,7 +11,7 @@ function Stawki({timer, setTimer}) {
   const [stage, setStage] = useState(true);
   const [matchesGr, setMatchesGr] = useState([]);
   const [matchesPO, setMatchesPo] = useState([]);
-  const [available, setAvailable] = useState();
+  const [loading, setloading] = useState();
   const [availablePO, setAvailablePo] = useState();
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function Stawki({timer, setTimer}) {
       window.location.assign("/Registracja");
     }
     getAllMatchesGroup(token).then((res) => {
-      setAvailable(true);
+      setloading(true);
       const matchdata = res.data.data.matches;
       setMatchesGr(matchdata);
     });
@@ -43,11 +43,9 @@ function Stawki({timer, setTimer}) {
         <button className="btn btn-dark m-2" onClick={group_stage}>Faza grupowa</button>
         <button className="btn btn-dark m-2" onClick={playoff}>Drabinka</button>
         {stage ? (
-          !available ? (
+          !loading ? (
           matchesGr && 
-          <Group_stage_bets 
-            matchesGr={matchesGr}
-          />
+          <Group_stage_bets />
         ) : (
           matchesGr && 
           <Group_stage

@@ -9,11 +9,8 @@ const {calculateTeamPoints} = require ('../scripts/teamPointsCalculator')
 
 exports.getAllMatches= async (req,res)=>{
     try {
-        console.log("GET /matches")
         if(req.header('authorization')!== undefined) {
-            console.log("authorization defined")
             const token=req.header('authorization').split(" ")[1]
-            console.log("token received")
             var user = await userModel.findOne({token:token});
             if( user !== null ){
                 console.log("user found")
@@ -25,7 +22,6 @@ exports.getAllMatches= async (req,res)=>{
 
         var allMatchUserGuesses=[]
 
-        console.log("GET all matches:")
 
         var matches = await matchModel.find(req.query).sort({'date':1,'time':1}).lean().populate('team1').populate("team2");
 

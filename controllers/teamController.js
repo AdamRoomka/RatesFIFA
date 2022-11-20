@@ -2,9 +2,7 @@ const teams = require('../models/teamModel');
 
 exports.getAllTeams = async (req, res) => {
     try {
-        console.log("GET /teams")
         const results = await teams.find().sort({'score':'desc'});
-        console.log("Teams found")
 
         res.status(200).json({
             results: teams.length,
@@ -23,8 +21,6 @@ exports.getAllTeams = async (req, res) => {
 exports.getTeamById = async (req,res)=>{
     try {
         const results = await teams.findById(req.params.id);
-
-        // res.setHeader('Access-Control-Allow-Origin', '*')
 
         res.status(200).json({
             data: {
