@@ -75,14 +75,6 @@ function Login() {
           placeholder="Hasło"
           {...register("password", {
             required: "Hasło obowiązkowe",
-            minLength: {
-              value: 7,
-              message: "Hasło musi zawierać co najmniej 7 symbol",
-            },
-            maxLength: {
-              value: 50,
-              message: "Nie więcej niż 50 symbolów",
-            },
           })}
         />
         {/* <div className="error text-danger fw-light m-2">

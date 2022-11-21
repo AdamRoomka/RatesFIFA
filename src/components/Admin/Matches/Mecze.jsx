@@ -113,6 +113,7 @@ function Mecze({ allTeams, matches, render, setRender }) {
         {matches.map((match) => (
           <ListaMeczow
             key={match._id}
+            matchId={match._id}
             team1={match.team1}
             team2={match.team2}
             time={match.time}
