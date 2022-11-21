@@ -16,38 +16,6 @@ function Navigation({role}) {
   }, [render]);
   function logOut() {
     window.localStorage.removeItem("token");
-    // const Datas = new Date();
-    // const year = Datas.getUTCFullYear();
-    // var month = Datas.getUTCMonth()+1;
-    // if (month < 10) {
-    //   month = "0" + month;
-    // }
-    // var day = Datas.getUTCDate();
-    // if (day < 10) {
-    //   day = "0" + day;
-    // }
-    // var hour = Datas.getUTCHours() + 3;
-    // if (hour < 10) {
-    //   hour = "0" + hour;
-    // }
-    // var minute = Datas.getUTCMinutes();
-    // if (minute < 10) {
-    //   minute = "0" + minute;
-    // }
-    // const yyymmdd = `${year}-${month}-${day}`;
-    // const hhmm = `${hour}:${minute}`;
-    // const postToLogs = {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     name: currentUser.name,
-    //     text: "Log out",
-    //     value: "Logged out from pages",
-    //     date: yyymmdd,
-    //     time: hhmm,
-    //   }),
-    // };
-    // fetch("http://localhost:4000/api/v1/logs/addNewLog", postToLogs);
     window.location("/register");
     setRender(true);
   }

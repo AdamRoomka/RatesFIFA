@@ -61,6 +61,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>
+          <footer>
+            <div>
+              <a href="https://fifa-rates-backend.loca.lt/" target="_blank" className="m-5 text-dark">Jeżeli nie działa strona poprawnie, prosze kliknąć tutaj!</a>
+            </div>
+          </footer>
         </Router>
       </div>
     </div>
