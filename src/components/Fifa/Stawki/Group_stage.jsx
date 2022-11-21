@@ -57,7 +57,7 @@ function Group_stage({ matchesGr }) {
 
   let date = new Date();
   date.setDate(date.getDate());
-  date.setHours(date.getHours());
+  date.setHours(date.getHours()+2);
   date.setMinutes(date.getMinutes()+5);
   let today = date.getTime();
   today = Math.floor(today / 1000);
