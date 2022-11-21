@@ -67,7 +67,7 @@ function Fifa({ allTeams, user, loading }) {
           <tbody>
             <tr>
               <th></th>
-              <th id='pierwsza'>Członkowie</th>
+              <th id="pierwsza">Członkowie</th>
               <th>Punkty</th>
             </tr>
             {user.map((user) =>
@@ -89,6 +89,17 @@ function Fifa({ allTeams, user, loading }) {
           </tbody>
         </table>
       </div>
+      <footer>
+        <div>
+          <a
+            href="https://fifa-rates-backend.loca.lt/"
+            target="_blank"
+            className="m-5 text-dark"
+          >
+            Jeżeli nie działa strona poprawnie, prosze kliknąć tutaj!
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

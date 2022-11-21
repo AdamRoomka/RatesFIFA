@@ -30,11 +30,7 @@ exports.getAllMatches= async (req,res)=>{
             const date=match.date.split("-")
             const time =match.time.split(":")
 
-            const minutesInMilisecondsBeforeMatch=process.env.SHOW_USER_RESULTS_MINUTES_BEFORE_MATCH*60000;
-
-            match.due=Date.parse(new Date(date[0], date[1]-1, date[2], time[0], time[1], 0))/1000 - minutesInMilisecondsBeforeMatch;
-            
-            var isFirstMatchStartsSoon= (match.due - Date.now()) >=  minutesInMilisecondsBeforeMatch ? true : false;
+            match.due=Date.parse(new Date(date[0], date[1]-1, date[2], time[0], time[1], 0))/1000;
 
             allMatchUserGuesses=[]
 
@@ -59,9 +55,7 @@ exports.getAllMatches= async (req,res)=>{
                 allMatchUserGuesses.push(guessObject)
             }
         
-            if(isFirstMatchStartsSoon){
-                match.guesses=allMatchUserGuesses;
-            }
+            match.guesses=allMatchUserGuesses;
         }
 
         res.status(200).json({

@@ -35,7 +35,7 @@ function Stawki({timer, setTimer}) {
   }, []);
   function playoff(){setStage(false)}
   function group_stage(){setStage(true)}
-
+  
   return (
     <>
       <div>

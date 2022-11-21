@@ -56,12 +56,11 @@ function Group_stage({ matchesGr }) {
   }
 
   let date = new Date();
-  date.setDate(date.getDate() - 7);
-  date.setMinutes(date.getMinutes() + 10);
+  date.setDate(date.getDate());
+  date.setHours(date.getHours());
+  date.setMinutes(date.getMinutes()+5);
   let today = date.getTime();
   today = Math.floor(today / 1000);
-
-  console.log(matchesGr)
 
   return (
     <div>
