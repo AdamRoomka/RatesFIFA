@@ -10,18 +10,22 @@ import Register from "./components/Auth/Register";
 import ErrorPage from "./components/ErrorPages/ErrorPage";
 import Navigation from "./components/Navigation/Navigation";
 import Stawki from "./components/Fifa/Stawki";
-import { getAllMatches } from "./api/lib/MatchesAPI";
+import { getAllMatches, getAllMatchesGroup, getAllMatchesPlayoff } from "./api/lib/MatchesAPI";
 import { getAllTeams } from "./api/lib/FifaAPI";
 import { getAllUsers } from "./api/lib/UsersApi";
 
 function App() {
   const [allTeams, setAllTeams] = useState([]);
   const [matches, setMatches] = useState([]);
+  const [matchesGr, setMatchesGr] = useState([]);
+  const [matchesPO, setMatchesPo] = useState([]);
+  const [loadingMatches, setLoadingMatches] = useState();
+  const [loadingUsers, setLoadingUsers] = useState();
+  const [availablePO, setAvailablePo] = useState();
   const [timer, setTimer] = useState([]);
   const [user, setUser] = useState([]);
   const [role, setRole] = useState([]);
   const [render, setRender] = useState(false);
-  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
@@ -33,6 +37,16 @@ function App() {
       const matchdata = res.data.data.matches;
       setMatches(matchdata);
     });
+    getAllMatchesGroup(token).then((res) => {
+      const matchdata = res.data.data.matches;
+      setMatchesGr(matchdata);
+      setLoadingMatches(true);
+    });
+    getAllMatchesPlayoff(token).then((res) => {
+      const matchdata = res.data.data.matches;
+      setMatchesPo(matchdata);
+      setAvailablePo(true);
+    });
     getAllTeams().then((res) => {
       const fifadata = res.data.data.teams;
       setAllTeams(fifadata);
@@ -42,8 +56,8 @@ function App() {
       setUser(userdata);
       const role = res.data.data.currentUserRole;
       setRole(role);
+      setLoadingUsers(true);
     });
-    setLoading(false);
   }, [render]);
 
   return (
@@ -52,8 +66,8 @@ function App() {
         <Router>
           <Navigation role={role} />
           <Routes>
-            <Route path="/" element={<Fifa allTeams={allTeams} loading={loading} user={user} />} />
-            <Route path="/stawki" element={<Stawki timer={timer} setTimer={setTimer}/>} />
+            <Route path="/" element={<Fifa allTeams={allTeams} loading={loadingUsers} user={user} />} />
+            <Route path="/stawki" element={<Stawki matchesGr={matchesGr} matchesPO={matchesPO} loading={loadingMatches} availablePO={availablePO} />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/admin" element={<Admin allTeams={allTeams} matches={matches} setRender={setRender} render={render} />} />
             <Route path="/admin/matches" element={<Mecze allTeams={allTeams} matches={matches} setRender={setRender} render={render} />} />

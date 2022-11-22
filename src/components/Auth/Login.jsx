@@ -17,6 +17,7 @@ function Login() {
   const {
     register,
     handleSubmit,
+    formState: { errors },
   } = useForm();
 
   function onSubmit(data) {
@@ -46,7 +47,6 @@ function Login() {
         });
       });
   }
-
   return (
     <form id="msform" onSubmit={handleSubmit(onSubmit)}>
       <fieldset>
@@ -65,9 +65,9 @@ function Login() {
             },
           })}
         />
-        {/* <div className="error text-danger fw-light m-2">
-          {errors.login?.message}
-        </div> */}
+        <div className="text-danger fw-light m-2">
+          {errors.login && <p>{errors.login.message}</p>}
+        </div>
         <input
           className="home-input"
           type="password"
@@ -77,9 +77,9 @@ function Login() {
             required: "Hasło obowiązkowe",
           })}
         />
-        {/* <div className="error text-danger fw-light m-2">
-          {errors.password?.message}
-        </div> */}
+        <div className="text-danger fw-light m-2">
+          {errors.password && <p>{errors.password.message}</p>}
+        </div>
         <button
           type="submit"
           name="next"

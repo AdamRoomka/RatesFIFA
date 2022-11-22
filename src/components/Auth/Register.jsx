@@ -11,7 +11,7 @@ function Register() {
     register,
     handleSubmit,
     reset,
-    //formState: { errors },
+    formState: { errors },
   } = useForm();
 
   useEffect(() => {
@@ -48,14 +48,6 @@ function Register() {
       <fieldset>
         <h2 className="fs-title">Stwórz swój profil</h2>
         <br />
-
-        {/* <div className="text-danger fw-light m-2">
-          {errors.name?.type === "pattern" && "Nie mogą być dodatkowe znaki"}
-          {errors.name?.type === "required" && "Nie wpisałeś imię i nazwisko"}
-          {errors.name?.type === "minLength" &&
-            "Muszą być co najmniej 3 symbole"}
-        </div> */}
-
         <input
           type="text"
           name="name"
@@ -63,19 +55,14 @@ function Register() {
           {...register("name", {
             required: "Musisz uzupełnić imię i nazwisko",
             minLength: 3,
-            pattern: /^[[^A-Za-ząčęėįšųūžĄČĘĖĮŠŲŪŽ ]*$/i,
+            pattern: /^[[^A-Za-ząąćčęęėįłńóśšųūžźżĄĄČĆĘĘĖĮŁŃÓŠŚŲŪŽŹŻ ]*$/i,
           })}
         />
-
-        {/* <div className="text-danger fw-light m-2">
-          {errors.login?.type === "pattern" && "Nie mogą być dodatkowe znaki"}
-          {errors.login?.type === "required" && "Nie wpisaleś login"}
-          {errors.login?.type === "minLength" &&
-            "Muszą być co najmniej 2 symbole"}
-          {errors.login?.type === "maxLength" &&
-            "Bez przesady, za długi login wpisałeś, do 30 symbolów"}
-        </div> */}
-
+        <div className="text-danger fw-light m-2">
+          {errors.name && <p>{errors.name.type === "pattern" && "Nie mogą być dodatkowe znaki"}</p>}
+          {errors.name && <p>{errors.name.type === "required" && "Nie wpisałeś imię i nazwisko"}</p>}
+          {errors.name && <p>{errors.name.type === "minLength" && "Muszą być co najmniej 3 symbole"}</p>}
+        </div>
         <input
           type="email"
           name="email"
@@ -84,7 +71,9 @@ function Register() {
             required: true,
           })}
         />
-
+        <div className="text-danger fw-light m-2">
+          {errors.email && <p>{errors.email.type === "required" && "Nie wpisałeś email"}</p>}
+        </div>
         <input
           type="text"
           name="login"
@@ -92,36 +81,27 @@ function Register() {
           {...register("login", {
             required: true,
             minLength: 2,
-            maxLength: 30,
-            pattern: /^[[^A-Za-ząčęėįšųūžĄČĘĖĮŠŲŪŽ]*$/i,
+            pattern: /^[[^A-Za-ząąćčęęėįłńóśšųūžźżĄĄČĆĘĘĖĮŁŃÓŠŚŲŪŽŹŻ]*$/i,
           })}
         />
-
-        {/* <div className="text-danger fw-light m-2">
-          {errors?.password?.type === "required" && "Hasło obowiązkowe"}
-          {errors?.password?.type === "minLength" &&
-            "Hasło musi zawierać co najmniej 7 symbol"}
-          {errors?.password?.type === "maxLength" &&
-            "Nie więcej niż 50 symbolów"}
-        </div> */}
-
+        <div className="text-danger fw-light m-2">
+          {errors.login && <p>{errors.login.type === "pattern" && "Nie mogą być dodatkowe znaki"}</p>}
+          {errors.login && <p>{errors.login.type === "required" && "Nie wpisałeś login"}</p>}
+          {errors.login && <p>{errors.login.type === "minLength" && "Muszą być co najmniej 2 symbole"}</p>}
+        </div>
         <input
           type="password"
           name="pass"
           placeholder="Hasło"
           {...register("password", {
             required: true,
-            minLength: 7,
-            maxLength: 50,
+            minLength: 5
           })}
         />
-
-        {/* <div className="text-danger fw-light m-2">
-          {errors.passwordRepeat?.type === "required" && "Hasło obowiązkowe"}
-          {errors.passwordRepeat?.type === "passwordMatch" &&
-            "Hasło musi być dopasowane"}
-        </div> */}
-
+        <div className="text-danger fw-light m-2">
+          {errors.password && <p>{errors.password.type === "required" && "Hasło obowiązkowe"}</p>}
+          {errors.password && <p>{errors.password.type === "minLength" && "Hasło musi zawierać co najmniej 5 symbol"}</p>}
+        </div>
         <input
           type="password"
           name="cpass"
@@ -131,7 +111,10 @@ function Register() {
             validate: { passwordMatch: (value) => value === password },
           })}
         />
-
+        <div className="text-danger fw-light m-2">
+          {errors.passwordRepeat && <p>{errors.passwordRepeat.type === "required" && "Hasło obowiązkowe"}</p>}
+          {errors.passwordRepeat && <p>{errors.passwordRepeat.type === "passwordMatch" && "Hasło musi być dopasowane"}</p>}
+        </div>
         <input
           type="submit"
           name="next"

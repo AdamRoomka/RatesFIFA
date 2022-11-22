@@ -30,8 +30,7 @@ function Fifa({ allTeams, user, loading }) {
                 <th>W/D/L</th>
                 <th>Pts.</th>
               </tr>
-
-              {!loading ? (
+              {loading ? (
                 allTeams.map((team) =>
                   team.group === groupName ? (
                     <tr className="border border-dark">
@@ -61,7 +60,6 @@ function Fifa({ allTeams, user, loading }) {
           </React.Fragment>
         ))}
       </table>
-
       <div className="d-flex justify-content-center">
         <table id="customers">
           <tbody>
@@ -71,7 +69,7 @@ function Fifa({ allTeams, user, loading }) {
               <th>Punkty</th>
             </tr>
             {user.map((user) =>
-              !loading ? (
+              loading ? (
                 <Tabela
                   key={user._id}
                   name={user.name}

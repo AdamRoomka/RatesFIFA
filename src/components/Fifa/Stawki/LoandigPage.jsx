@@ -1,7 +1,7 @@
 import * as React from "react";
 
 // Index
-function Group_stage_bets() {
+function LoandigPage() {
   return (
     <div>
       <div className="container-fluid d-flex spinner-container justify-content-center mt-5 pt-5">
@@ -11,4 +11,4 @@ function Group_stage_bets() {
   );
 }
 
-export default Group_stage_bets;
+export default LoandigPage;
