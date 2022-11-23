@@ -1,70 +1,80 @@
-.margin{
+.margin {
     padding: 30px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 1fr 1fr;
 }
-.Text1{
+
+.Text1 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
     justify-self: center;
 }
-.Text2{
+
+.Text2 {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
     justify-self: center;
 }
-.Text3{
+
+.Text3 {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
     justify-self: center;
 }
-.Team1{
+
+.Team1 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 3;
 }
-.Team2{
+
+.Team2 {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
 }
-.data{
+
+.data {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
 }
-.time{
+
+.time {
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 3;
 }
 
-.searchResults{
+.searchResults {
     color: white;
 }
-.id1{
+
+.id1 {
     justify-self: center;
     border-radius: 4%;
     height: 200px;
     width: 300px;
 }
-.id2{
+
+.id2 {
     justify-self: center;
     border-radius: 4%;
     height: 200px;
     width: 300px;
 }
+
 input[type=date] {
     height: 80px;
     font-size: 30px;
@@ -75,8 +85,9 @@ input[type=date] {
     margin: 15px;
     text-align: center;
     align-self: center;
-  }
-select{
+}
+
+select {
     font-size: 30px;
     border: 1px solid #ccc;
     background-color: #3c3b3a;
@@ -86,14 +97,16 @@ select{
     text-align: center;
     height: 90px;
 }
-.matchTime{
+
+.matchTime {
     grid-column-start: 3;
     grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: 2;
     text-align: center;
 }
-.matchData{
+
+.matchData {
     grid-column-start: 3;
     grid-column-end: 6;
     grid-row-start: 3;
@@ -101,23 +114,10 @@ select{
     text-align: center;
     color: #ff518e;
 }
-.pozycja{
+
+.pozycja {
     grid-column-start: 3;
     grid-column-end: 6;
     grid-row-start: 4;
     grid-row-end: 5;
-}
-@media (max-width:820px){
-    .pozycja{
-        grid-column-start: 2;
-        grid-column-end: 5;
-    }
-}
-@media (max-width:425px){
-    .pozycja{
-        grid-column-start: 1;
-        grid-column-end: 4;
-        grid-row-start: 6;
-        grid-row-end: 7;
-    }
 }

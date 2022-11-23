@@ -4,8 +4,7 @@ import Tabela from "./Tabela";
 import "../css/table.css";
 import "../css/spinner.css";
 
-function Fifa({ allTeams, user, loading }) {
-  // const [isOpen, setIsOpen] = useState(false);
+function Fifa({ allTeams, user, loadingTeams, loadingUser }) {
   let position = 1;
   const groups = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -15,9 +14,6 @@ function Fifa({ allTeams, user, loading }) {
     }
   }, []);
 
-  // const toggleAddPopup = () => {
-  //   setIsOpen(!isOpen);
-  // };
   return (
     <div className="container">
       <title>Fifa World Cup 2022</title>
@@ -30,7 +26,7 @@ function Fifa({ allTeams, user, loading }) {
                 <th>W/D/L</th>
                 <th>Pts.</th>
               </tr>
-              {loading ? (
+              {loadingTeams ? (
                 allTeams.map((team) =>
                   team.group === groupName ? (
                     <tr className="border border-dark">
@@ -69,7 +65,7 @@ function Fifa({ allTeams, user, loading }) {
               <th>Punkty</th>
             </tr>
             {user.map((user) =>
-              loading ? (
+              loadingUser == true ? (
                 <Tabela
                   key={user._id}
                   name={user.name}

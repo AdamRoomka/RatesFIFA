@@ -2,7 +2,17 @@ import React from "react";
 import "../../../css/rez.css";
 import Guess from "./Guess";
 
-function Rez({ name1, name2, score1, score2, code1, code2, data, guesses }) {
+function Rez({
+  name1,
+  name2,
+  score1,
+  score2,
+  code1,
+  code2,
+  data,
+  guesses,
+  completed,
+}) {
   var pozycja = 1;
   return (
     <>
@@ -16,8 +26,13 @@ function Rez({ name1, name2, score1, score2, code1, code2, data, guesses }) {
           <h4 className="team1Name">{name1}</h4>
           <h5 className="date">{data}</h5>
           <h4 className="team2Name">{name2}</h4>
-          <h4 className="score">
+          <h4 className="score text-center">
             {score1} - {score2}
+            {!completed ? (
+              <h5 className="live">Mecz trwa</h5>
+            ) : (
+              <h5 className="text-danger">Mecz skończony</h5>
+            )}
           </h4>
           <img
             src={`https://countryflagsapi.com/png/${code2}`}

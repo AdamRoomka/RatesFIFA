@@ -20,7 +20,8 @@ function App() {
   const [matchesGr, setMatchesGr] = useState([]);
   const [matchesPO, setMatchesPo] = useState([]);
   const [loadingMatches, setLoadingMatches] = useState();
-  const [loadingUsers, setLoadingUsers] = useState();
+  const [loadingUsers, setLoadingUsers] = useState(false);
+  const [loadingTeams, setLoadingTeams] = useState();
   const [availablePO, setAvailablePo] = useState();
   const [timer, setTimer] = useState([]);
   const [user, setUser] = useState([]);
@@ -33,6 +34,13 @@ function App() {
     if (typeof window !== "undefined") {
       token = window.localStorage.getItem("token");
     }
+    getAllUsers(token).then((res) => {
+      const userdata = res.data.data.users;
+      setUser(userdata);
+      setLoadingUsers(true);
+      const role = res.data.data.currentUserRole;
+      setRole(role);
+    });
     getAllMatches(token).then((res) => {
       const matchdata = res.data.data.matches;
       setMatches(matchdata);
@@ -50,13 +58,7 @@ function App() {
     getAllTeams().then((res) => {
       const fifadata = res.data.data.teams;
       setAllTeams(fifadata);
-    });
-    getAllUsers(token).then((res) => {
-      const userdata = res.data.data.users;
-      setUser(userdata);
-      const role = res.data.data.currentUserRole;
-      setRole(role);
-      setLoadingUsers(true);
+      setLoadingTeams(true)
     });
   }, [render]);
 
@@ -66,7 +68,7 @@ function App() {
         <Router>
           <Navigation role={role} />
           <Routes>
-            <Route path="/" element={<Fifa allTeams={allTeams} loading={loadingUsers} user={user} />} />
+            <Route path="/" element={<Fifa allTeams={allTeams} loadingUser={loadingUsers} loadingTeams={loadingTeams} user={user} />} />
             <Route path="/stawki" element={<Stawki matchesGr={matchesGr} matchesPO={matchesPO} loading={loadingMatches} availablePO={availablePO} />} />
             <Route path="/*" element={<ErrorPage />} />
             <Route path="/admin" element={<Admin allTeams={allTeams} matches={matches} setRender={setRender} render={render} />} />
