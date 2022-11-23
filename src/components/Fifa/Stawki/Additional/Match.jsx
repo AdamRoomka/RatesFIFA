@@ -57,7 +57,7 @@ class Match extends React.Component {
         />
 
         <h6 className="matchData">{this.props.date}</h6>
-        <h4 className="flex text1">{this.props.name2}</h4>
+        <h4 className="flex text2">{this.props.name2}</h4>
         <img
           className="flex image2 flagres"
           htmlFor="first"
