@@ -23,7 +23,8 @@ exports.getAllUsers = async (req,res)=>{
         res.status(200).json({
             data: {
                 users: results,
-                currentUserRole:currentUser.role
+                name: currentUser.name,
+                currentUserRole: currentUser.role
             }
         });
     } catch (err) {
@@ -132,7 +133,6 @@ exports.loginUser = async (req, res) => {
     res.status(200).json({status:'success',message:'Login successful',token:user.token,code:'LOGIN_SUCCESSFUL',role:user.role})
     console.log('Login successful: '+user.login,user)
 }
-
 
 exports.updateUser= async (req,res) => {
     if(req.header('authorization')=== undefined) {
