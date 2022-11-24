@@ -23,9 +23,9 @@ function App() {
   const [loadingUsers, setLoadingUsers] = useState(false);
   const [loadingTeams, setLoadingTeams] = useState();
   const [availablePO, setAvailablePo] = useState();
-  const [timer, setTimer] = useState([]);
   const [user, setUser] = useState([]);
   const [role, setRole] = useState([]);
+  const [name, setName] = useState([]);
   const [render, setRender] = useState(false);
 
 
@@ -39,7 +39,9 @@ function App() {
       setUser(userdata);
       setLoadingUsers(true);
       const role = res.data.data.currentUserRole;
+      const name = res.data.data.name;
       setRole(role);
+      setName(name);
     });
     getAllMatches(token).then((res) => {
       const matchdata = res.data.data.matches;
@@ -66,7 +68,7 @@ function App() {
     <div className="App">
       <div className="App-header">
         <Router>
-          <Navigation role={role} />
+          <Navigation role={role} name={name} />
           <Routes>
             <Route path="/" element={<Fifa allTeams={allTeams} loadingUser={loadingUsers} loadingTeams={loadingTeams} user={user} />} />
             <Route path="/stawki" element={<Stawki matchesGr={matchesGr} matchesPO={matchesPO} loading={loadingMatches} availablePO={availablePO} />} />
