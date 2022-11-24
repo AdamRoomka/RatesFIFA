@@ -27,11 +27,14 @@ function Rez({
           <h5 className="date">{data}</h5>
           <h4 className="team2Name">{name2}</h4>
           <h4 className="score text-center">
-            {score1} - {score2}
+            
             {!completed ? (
               <h5 className="live">Mecz trwa</h5>
             ) : (
+              <div>
+                {score1} - {score2}
               <h5 className="text-danger">Mecz skończony</h5>
+              </div>
             )}
           </h4>
           <img
