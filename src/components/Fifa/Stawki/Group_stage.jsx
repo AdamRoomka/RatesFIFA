@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useRef} from 'react';
 import Rez from "./Additional/Rez";
 import Match from "./Additional/Match";
 import { useState } from "react";
@@ -7,8 +8,10 @@ import { saveGuess } from "../../../api/lib/GuessApi";
 
 // Stawki
 function Group_stage({ matchesGr }) {
+  let btnRef = useRef();
   const [success, setSuccess] = useState(false);
   const [guesses] = useState([]);
+  const [sendButtonState,setButtonState]= useState(true);
 
   const getScore = (matchId, score1, score2) => {
     var guess = {};
@@ -34,6 +37,9 @@ function Group_stage({ matchesGr }) {
   };
 
   function onSubmit() {
+    if(btnRef.current){
+      btnRef.current.setAttribute("disabled", "disabled");
+    }
     var tmp = guesses.map((el) => {
       if (
         el.matchId !== undefined &&
@@ -52,6 +58,7 @@ function Group_stage({ matchesGr }) {
     }
     saveGuess(guessesData, token).then(() => {
       setSuccess(true);
+      btnRef.current.removeAttribute("disabled")
     });
   }
 
@@ -115,6 +122,7 @@ function Group_stage({ matchesGr }) {
             type="submit"
             className="button_zatwierdz"
             value="Zatwierdź"
+            ref={btnRef}
             onClick={onSubmit}
           />
           {success && (
