@@ -65,6 +65,9 @@ exports.createOrUpdateGuesses=async (req,res)=>{
         
         var newOrUpdatedGuess= existingGuess===null ? new guessModel() : existingGuess;
         
+        guess.score1= guess.score1!=="" ? guess.score1 : 0; 
+        guess.score2= guess.score2!=="" ? guess.score2 : 0;
+
         newOrUpdatedGuess.score1=guess.score1;
         newOrUpdatedGuess.score2=guess.score2;
         newOrUpdatedGuess.matchId=guess.matchId;
