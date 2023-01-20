@@ -143,7 +143,7 @@ exports.updateUser= async (req,res) => {
 
     var currentUser = await userModel.findOne({token:token})
 
-    if(currentUser !== null && currentUser.role!=="admin") {
+    if(currentUser !== null) {
         res.status(400).json({ message: "Wrong access rights",status:'fail',code:'WRONG_ACCESS_RIGHTS'});
         return
     }

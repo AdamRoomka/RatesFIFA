@@ -39,5 +39,4 @@ export async function updatePassword(token, subId, pass) {
 // }
 
 export const createUser = (data) => axiosUsers.post('/', JSON.stringify(data));
-// export const updatePassword = (subId, data) => axiosUsers.post(`/${subId}`, JSON.stringify(data));
 export const doLogin = (data) => axiosUsers.post('/login', JSON.stringify(data));

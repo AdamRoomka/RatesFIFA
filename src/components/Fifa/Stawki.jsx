@@ -5,7 +5,7 @@ import LoandigPage from "./Stawki/LoandigPage";
 import Playoff from './Stawki/Playoff'
 
 function Stawki({matchesGr, matchesPO, loading, availablePO}) {
-  const [stage, setStage] = useState(true);
+  const [stage, setStage] = useState(false);
   
 
   useEffect(() => {
