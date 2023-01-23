@@ -6,36 +6,35 @@ const matchRoutes = require("./routes/matchRoutes");
 const userRoutes = require("./routes/userRoutes");
 const guessRoutes = require("./routes/guessRoutes");
 const contRoutes = require("./routes/continuesRoutes");
-// const mailRoutes = require("./routes/mailRoutes");
 
 const express = require('express')
 var cors = require("cors")
 require("./DBconnection");
 const path = require('path')
 var bodyParser = require('body-parser');
-const PORT = process.env.PORT || 5002
+const PORT = process.env.PORT || 5003
 const m2s = require('mongoose-to-swagger');
 const auth = require("./auth");
 
-const localtunnel = require('localtunnel');
+// const localtunnel = require('localtunnel');
 
-(async () => {
-  const tunnel = await localtunnel({ port: 3000,subdomain:'rates-fifa' });
+// (async () => {
+//   const tunnel = await localtunnel({ port: 3000,subdomain:'rates-fifa' });
 
-console.log(`front: ${tunnel.url}`);
-  tunnel.on('close', () => {
-    // tunnels are closed
-  });
-})();
-(async () => {
-  const tunnel = await localtunnel({ port: 5002,subdomain:'fifa-rates-backend' });
+// console.log(`front: ${tunnel.url}`);
+//   tunnel.on('close', () => {
+//     // tunnels are closed
+//   });
+// })();
+// (async () => {
+//   const tunnel = await localtunnel({ port: 5003,subdomain:'fifa-rates-backend' });
 
-  // the assigned public url for your tunnel
-console.log(`back: ${tunnel.url}`);
-  tunnel.on('close', () => {
-    // tunnels are closed
-  });
-})();
+//   // the assigned public url for your tunnel
+// console.log(`back: ${tunnel.url}`);
+//   tunnel.on('close', () => {
+//     // tunnels are closed
+//   });
+// })();
 
     
 
@@ -71,7 +70,6 @@ express()
 .use("/api/v1/rates/", matchRoutes)
 .use("/api/v1/rates/", userRoutes)
 .use("/api/v1/rates/", guessRoutes)
-// .use("/api/v1/rates/", mailRoutes)
 .use("/", contRoutes)
 
 .use(express.static(path.join(__dirname, 'public')))
@@ -80,4 +78,3 @@ express()
 // .post("*",auth)
 // .get("/",auth)
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-

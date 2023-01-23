@@ -86,7 +86,7 @@ function Fifa({ allTeams, user, loadingTeams, loadingUser }) {
       <footer>
         <div>
           <a
-            href="https://fifa-rates-backend.loca.lt/"
+            href="http://localhost:5003/"
             target="_blank"
             className="m-5 text-dark"
           >
