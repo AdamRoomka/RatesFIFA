@@ -4,7 +4,7 @@ import axios from "axios";
 
 export async function getAllUsers(token) {
     const res = await axios.create({
-        baseURL: "https://fifa-rates-backend.loca.lt/api/v1/rates/users",
+        baseURL: "http://localhost:5003/api/v1/rates/users",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -16,7 +16,7 @@ export async function getAllUsers(token) {
 }
 export async function updatePassword(token, subId, pass) {
     const res = await axios.create({
-        baseURL: "https://fifa-rates-backend.loca.lt/api/v1/rates/users",
+        baseURL: "http://localhost:5003/api/v1/rates/users",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export async function updatePassword(token, subId, pass) {
 
 // export async function getUserAdmin(token) {
 //     const res = await axios.create({
-//         baseURL: "https://fifa-rates-backend.loca.lt/api/v1/rates/users",
+//         baseURL: "http://localhost:5003/api/v1/rates/users",
 //         headers: {
 //           Accept: "application/json",
 //           "Content-Type": "application/json",
@@ -39,5 +39,4 @@ export async function updatePassword(token, subId, pass) {
 // }
 
 export const createUser = (data) => axiosUsers.post('/', JSON.stringify(data));
-// export const updatePassword = (subId, data) => axiosUsers.post(`/${subId}`, JSON.stringify(data));
 export const doLogin = (data) => axiosUsers.post('/login', JSON.stringify(data));
