@@ -1,53 +1,52 @@
 const express = require("express");
-
-const {
-  getAllTeams,
-  getTeamById
-} = require("./../controllers/teamController");
+const { getAllTeams, getTeamById } = require("./../controllers/teamController");
 
 const router = express.Router();
 
-/**
- * @swagger
- * /teams/:
- *   get:
- *     tags: 
- *       - Teams
- *     summary: Get all teams
- *     description:
- *     responses:
- *       200:
- *         description: A all teams
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/definitions/Team'
-*/
-router.route("/teams/").get(getAllTeams);
-/**
- * @swagger
- * /teams/{id}:
- *   get:
- *     tags: 
- *       - Teams
- *     summary: Get team by ID
- *     description: 
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         description: Id of team
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: A single team.
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/definitions/Team'
-*/
-router.route("/teams/:id/").get(getTeamById);
+router.route("/teams/").get(async (req, res) => {
+  try {
+    const results = await teams.find().sort({ score: "desc" });
+    io.emit("teamsData", {
+      results: teams.length,
+      data: {
+        teams: results,
+      },
+    });
 
+    res.status(200).json({
+      results: teams.length,
+      data: {
+        teams: results,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+});
+
+router.route("/teams/:id/").get(async (req, res) => {
+  try {
+    const results = await teams.findById(req.params.id);
+    io.emit("teamDataById", {
+      data: {
+        teams: results,
+      },
+    });
+
+    res.status(200).json({
+      data: {
+        teams: results,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      message: err,
+    });
+  }
+});
 
 module.exports = router;

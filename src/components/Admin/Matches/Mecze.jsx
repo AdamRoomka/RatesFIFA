@@ -14,7 +14,7 @@ function Mecze({ allTeams, matches, render, setRender, role }) {
 
   return role !== "admin" ? (
     <>
-    <ErrorPage />
+      <ErrorPage />
     </>
   ) : (
     <>

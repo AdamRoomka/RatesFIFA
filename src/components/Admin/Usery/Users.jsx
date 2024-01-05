@@ -26,7 +26,7 @@ function Users({ setRender, users, role }) {
   }
   return role !== "admin" ? (
     <>
-    <ErrorPage />
+      <ErrorPage />
     </>
   ) : (
     <>

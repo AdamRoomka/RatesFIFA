@@ -27,7 +27,9 @@ function Stawki({ matchesGr, matchesPO, availablePO }) {
         </button>
         {stage
           ? matchesGr && <GroupStage matchesGr={matchesGr} />
-          : matchesGr && <Playoff matchesGr={matchesPO} availablePO={availablePO} />}
+          : matchesGr && (
+              <Playoff matchesGr={matchesPO} availablePO={availablePO} />
+            )}
       </div>
     </>
   );

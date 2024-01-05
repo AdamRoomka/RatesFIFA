@@ -1,25 +1,20 @@
 const mongoose = require("mongoose");
 
-// DB schema
-const Date = {
-  timestamps: { currentTime: () => new Date() },
-};
-
-const DBSchema = mongoose.Schema(
+// Definiuj schemat meczu
+const matchSchema = new mongoose.Schema(
   {
-    team1: {type: mongoose.Schema.Types.ObjectId, ref: 'team'},
-    team2: {type: mongoose.Schema.Types.ObjectId, ref: 'team'},
-    score1: {default:0,type:Number},
-    score2: {default:0,type:Number},
-    date : { type : String },
-    time: {type:String},
-    type: {type:String,default:"group_stage"},
-    completed: {type:Boolean,defalut:false}
+    team1: { type: mongoose.Schema.Types.ObjectId, ref: "team" },
+    team2: { type: mongoose.Schema.Types.ObjectId, ref: "team" },
+    score1: { default: 0, type: Number },
+    score2: { default: 0, type: Number },
+    date: { type: String },
+    time: { type: String },
+    type: { type: String, default: "group_stage" },
+    completed: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
 
+const Match = mongoose.model("Match", matchSchema);
 
-const DBModel = new mongoose.model("match", DBSchema,'Matches');
-
-module.exports = DBModel;
+module.exports = Match;

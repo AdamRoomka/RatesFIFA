@@ -1,36 +1,41 @@
-.rez-grid{
+.rez-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     box-shadow: 0px 0px 10px rgb(0, 65, 0);
     border-radius: 5px;
 }
-.team1Name{
+
+.team1Name {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
 }
-.team2Name{
+
+.team2Name {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 4;
 }
-.date{
+
+.date {
     grid-column-start: 1;
     grid-column-end: 4;
     grid-row-start: 4;
     grid-row-end: 5;
     color: red;
 }
-.score{
+
+.score {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
 }
-.flags{
+
+.flags {
     grid-row-start: 2;
     grid-row-end: 3;
 }

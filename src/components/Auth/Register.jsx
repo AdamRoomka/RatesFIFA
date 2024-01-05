@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import swal from "sweetalert";
 import { useForm } from "react-hook-form";
-import { createUser } from "../../api/lib/UsersApi";
 import { Link } from "react-router-dom";
+import { socket } from "../../socket";
 import "../css/auth.css";
 
 function Register() {
@@ -14,13 +14,17 @@ function Register() {
     formState: { errors },
   } = useForm();
 
-    if (window.localStorage.getItem("token") !== null) {
-      window.location.assign("/");
-    }
+  if (window.localStorage.getItem("token") !== null) {
+    window.location.assign("/");
+  }
 
-  function onSubmit(data) {
-    createUser(data)
-      .then((result) => {
+  const onSubmit = (data) => {
+    console.log(data);
+    socket.emit("registerUser", data);
+  };
+  useEffect(() => {
+    const handleRegisterResponse = (response) => {
+      if (response.success) {
         swal({
           text: "Rejestracja udana, teraz możesz zalogować się",
           icon: "success",
@@ -28,17 +32,21 @@ function Register() {
           timer: 2000,
         });
         window.location.assign("/Login");
-      })
-      .catch((error) => {
+      } else {
         swal({
-          text: "Taki użytkownik już istnieje",
+          text: "Dane kontaktowe są niepoprawne, spróbuj jeszcze raz!",
           icon: "error",
-          button: "ok",
-          timer: 5000,
+          button: "Dobrze",
+          timer: 2000,
         });
-      });
-    reset();
-  }
+      }
+    };
+    socket.on("registerResponse", handleRegisterResponse);
+    return () => {
+      socket.off("registerResponse", handleRegisterResponse);
+    };
+  }, [socket]);
+
   let password = watch("password");
 
   return (
@@ -57,9 +65,23 @@ function Register() {
           })}
         />
         <div className="text-danger fw-light m-2">
-          {errors.name && <p>{errors.name.type === "pattern" && "Nie mogą być dodatkowe znaki"}</p>}
-          {errors.name && <p>{errors.name.type === "required" && "Nie wpisałeś imię i nazwisko"}</p>}
-          {errors.name && <p>{errors.name.type === "minLength" && "Muszą być co najmniej 3 symbole"}</p>}
+          {errors.name && (
+            <p>
+              {errors.name.type === "pattern" && "Nie mogą być dodatkowe znaki"}
+            </p>
+          )}
+          {errors.name && (
+            <p>
+              {errors.name.type === "required" &&
+                "Nie wpisałeś imię i nazwisko"}
+            </p>
+          )}
+          {errors.name && (
+            <p>
+              {errors.name.type === "minLength" &&
+                "Muszą być co najmniej 3 symbole"}
+            </p>
+          )}
         </div>
         <input
           type="email"
@@ -70,7 +92,9 @@ function Register() {
           })}
         />
         <div className="text-danger fw-light m-2">
-          {errors.email && <p>{errors.email.type === "required" && "Nie wpisałeś email"}</p>}
+          {errors.email && (
+            <p>{errors.email.type === "required" && "Nie wpisałeś email"}</p>
+          )}
         </div>
         <input
           type="text"
@@ -83,9 +107,21 @@ function Register() {
           })}
         />
         <div className="text-danger fw-light m-2">
-          {errors.login && <p>{errors.login.type === "pattern" && "Nie mogą być dodatkowe znaki"}</p>}
-          {errors.login && <p>{errors.login.type === "required" && "Nie wpisałeś login"}</p>}
-          {errors.login && <p>{errors.login.type === "minLength" && "Muszą być co najmniej 2 symbole"}</p>}
+          {errors.login && (
+            <p>
+              {errors.login.type === "pattern" &&
+                "Nie mogą być dodatkowe znaki"}
+            </p>
+          )}
+          {errors.login && (
+            <p>{errors.login.type === "required" && "Nie wpisałeś login"}</p>
+          )}
+          {errors.login && (
+            <p>
+              {errors.login.type === "minLength" &&
+                "Muszą być co najmniej 2 symbole"}
+            </p>
+          )}
         </div>
         <input
           type="password"
@@ -93,12 +129,19 @@ function Register() {
           placeholder="Hasło"
           {...register("password", {
             required: true,
-            minLength: 5
+            minLength: 5,
           })}
         />
         <div className="text-danger fw-light m-2">
-          {errors.password && <p>{errors.password.type === "required" && "Hasło obowiązkowe"}</p>}
-          {errors.password && <p>{errors.password.type === "minLength" && "Hasło musi zawierać co najmniej 5 symbol"}</p>}
+          {errors.password && (
+            <p>{errors.password.type === "required" && "Hasło obowiązkowe"}</p>
+          )}
+          {errors.password && (
+            <p>
+              {errors.password.type === "minLength" &&
+                "Hasło musi zawierać co najmniej 5 symbol"}
+            </p>
+          )}
         </div>
         <input
           type="password"
@@ -110,8 +153,17 @@ function Register() {
           })}
         />
         <div className="text-danger fw-light m-2">
-          {errors.passwordRepeat && <p>{errors.passwordRepeat.type === "required" && "Hasło obowiązkowe"}</p>}
-          {errors.passwordRepeat && <p>{errors.passwordRepeat.type === "passwordMatch" && "Hasło musi być dopasowane"}</p>}
+          {errors.passwordRepeat && (
+            <p>
+              {errors.passwordRepeat.type === "required" && "Hasło obowiązkowe"}
+            </p>
+          )}
+          {errors.passwordRepeat && (
+            <p>
+              {errors.passwordRepeat.type === "passwordMatch" &&
+                "Hasło musi być dopasowane"}
+            </p>
+          )}
         </div>
         <input
           type="submit"

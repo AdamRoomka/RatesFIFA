@@ -7,7 +7,6 @@ function KoniecMeczu({ team1, team2, score1, score2, date, time }) {
         <>
           <h4 className="flex text1">{team1.name}</h4>
         </>
-
         <div className="empty"></div>
         <div className="timeAd">{time}</div>
         <div className="dateAd">{date}</div>
@@ -18,7 +17,6 @@ function KoniecMeczu({ team1, team2, score1, score2, date, time }) {
         <h2 className="number2" type="number" placeholder="0">
           {score2}
         </h2>
-
         <>
           <h4 className="flex text2">{team2.name}</h4>
         </>

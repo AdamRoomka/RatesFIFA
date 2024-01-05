@@ -1,6 +1,6 @@
 import axios from "axios";
 
-var token=''
+var token = "";
 const axiosMatches = axios.create({
   baseURL: "http://localhost:5002/api/v1/rates/",
   headers: {

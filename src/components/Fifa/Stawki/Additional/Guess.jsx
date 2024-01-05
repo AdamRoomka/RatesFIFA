@@ -2,7 +2,6 @@ import React from "react";
 import "../../../css/guess.css";
 
 function Guess({ points, score1, score2, userName, pozycja }) {
-  
   return (
     <tr>
       <td>{pozycja}</td>
