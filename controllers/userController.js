@@ -15,7 +15,7 @@ exports.getAllUsers = async (req,res)=>{
         var currentUser=await userModel.findOne({token:token})
         var selectColumnsFromUserTable="name score -_id"
         if(currentUser.role==="admin") {
-            selectColumnsFromUserTable="-token -password"
+            selectColumnsFromUserTable="-token -password -email"
         }
 
         var results = await userModel.find().select(selectColumnsFromUserTable).sort({'score':'desc'});

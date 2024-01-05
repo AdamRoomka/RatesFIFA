@@ -3,15 +3,20 @@ import { RiAddFill } from "react-icons/ri";
 import ListaMeczow from "./ListaMeczow";
 import KoniecMeczu from "./KoniecMeczu";
 import StworzMatch from "./StworzMatch";
+import ErrorPage from "../../ErrorPages/ErrorPage";
 import "./match.css";
 
-function Mecze({ allTeams, matches, render, setRender }) {
+function Mecze({ allTeams, matches, render, setRender, role }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggleAddPopup = () => {
     setIsOpen(!isOpen);
   };
 
-  return (
+  return role !== "admin" ? (
+    <>
+    <ErrorPage />
+    </>
+  ) : (
     <>
       <div className="d-flex justify-content-center">
         <button
@@ -34,7 +39,7 @@ function Mecze({ allTeams, matches, render, setRender }) {
       )}
       <form className="fill">
         {matches.map((match) =>
-          match.completed == undefined ? (
+          !match.completed ? (
             <ListaMeczow
               key={match._id}
               matchId={match._id}

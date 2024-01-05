@@ -19,21 +19,13 @@ function StworzMatch({
   const [id1, setFlag1] = useState("");
   const [id2, setFlag2] = useState("");
 
-  let flag1, flag2, name1, name2;
+  let name1, name2;
 
   allTeams.map((name) =>
     name._id === id1
       ? (name1 = name.name)
       : "" || name._id === id2
       ? (name2 = name.name)
-      : ""
-  );
-
-  allTeams.map((flag) =>
-    flag._id === id1
-      ? (flag1 = flag.code)
-      : "" || flag._id === id2
-      ? (flag2 = flag.code)
       : ""
   );
 
@@ -88,16 +80,6 @@ function StworzMatch({
                 </option>
               ))}
             </select>
-
-            {flag1 == null ? (
-              ""
-            ) : (
-              <img
-                src={`https://countryflagsapi.com/png/${flag1}`}
-                className="id1"
-              />
-            )}
-
             <select
               {...register("team2")}
               defaultValue=""
@@ -114,15 +96,6 @@ function StworzMatch({
                 </option>
               ))}
             </select>
-
-            {flag2 == null ? (
-              ""
-            ) : (
-              <img
-                src={`https://countryflagsapi.com/png/${flag2}`}
-                className="id2"
-              />
-            )}
           </div>
           <div className="info d-flex flex-row my-4">
             <div className="amountblock d-flex flex-column">

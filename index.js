@@ -17,34 +17,12 @@ const PORT = process.env.PORT || 5002
 const m2s = require('mongoose-to-swagger');
 const auth = require("./auth");
 
-const localtunnel = require('localtunnel');
-
-(async () => {
-  const tunnel = await localtunnel({ port: 3000,subdomain:'rates-fifa' });
-
-console.log(`front: ${tunnel.url}`);
-  tunnel.on('close', () => {
-    // tunnels are closed
-  });
-})();
-(async () => {
-  const tunnel = await localtunnel({ port: 5002,subdomain:'fifa-rates-backend' });
-
-  // the assigned public url for your tunnel
-console.log(`back: ${tunnel.url}`);
-  tunnel.on('close', () => {
-    // tunnels are closed
-  });
-})();
 
     
 
 var app = express();
 
 express()
-// .use(cors({
-//   origin:'https://rates-fifa.loca.lt/'
-// }))
 .use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*")
   res.header(
@@ -71,13 +49,10 @@ express()
 .use("/api/v1/rates/", matchRoutes)
 .use("/api/v1/rates/", userRoutes)
 .use("/api/v1/rates/", guessRoutes)
-// .use("/api/v1/rates/", mailRoutes)
 .use("/", contRoutes)
 
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
-// .post("*",auth)
-// .get("/",auth)
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 

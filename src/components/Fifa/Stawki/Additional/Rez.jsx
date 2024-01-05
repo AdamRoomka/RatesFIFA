@@ -18,52 +18,48 @@ function Rez({
     <>
       <div className="col-12 d-flex justify-content-center">
         <div className="rez-grid p-3">
-          <img
-            src={`https://countryflagsapi.com/png/${code1}`}
-            alt={code1}
-            className="w-25 flags"
-          />
           <h4 className="team1Name">{name1}</h4>
           <h5 className="date">{data}</h5>
           <h4 className="team2Name">{name2}</h4>
-          <h4 className="score text-center">
-            
+          <div className="score text-center">
             {!completed ? (
               <h5 className="live">Mecz trwa</h5>
             ) : (
-              <div>
-                {score1} - {score2}
-              <h5 className="text-danger">Mecz skończony</h5>
-              </div>
+              <>
+                <p>
+                  {score1} - {score2}
+                </p>
+                <h5 className="text-danger">Mecz skończony</h5>
+              </>
             )}
-          </h4>
-          <img
-            src={`https://countryflagsapi.com/png/${code2}`}
-            alt={code2}
-            className="w-25 flags"
-          />
+          </div>
         </div>
       </div>
       <div className="d-flex justify-content-center mb-5 mt-2">
         <div className="tabela text-center">
-          <tr>
-            <th>#</th>
-            <th>Imię i nazwisko</th>
-            <th>Rezultat</th>
-            <th>Punkty</th>
-          </tr>
-
-          {guesses &&
-            guesses.map((guess) => (
-              <Guess
-                key={guess._id}
-                pozycja={pozycja++}
-                points={guess.points}
-                score1={guess.score1}
-                score2={guess.score2}
-                userName={guess.userName}
-              />
-            ))}
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Imię i nazwisko</th>
+                <th>Rezultat</th>
+                <th>Punkty</th>
+              </tr>
+            </thead>
+            <tbody>
+              {guesses &&
+                guesses.map((guess, index) => (
+                  <Guess
+                    key={index}
+                    pozycja={pozycja++}
+                    points={guess.points}
+                    score1={guess.score1}
+                    score2={guess.score2}
+                    userName={guess.userName}
+                  />
+                ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>

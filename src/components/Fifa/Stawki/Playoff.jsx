@@ -1,14 +1,12 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Match from "./Additional/Match";
 import Rez from "./Additional/Rez";
-import { useState } from "react";
-import "../../css/table.css";
 import { saveGuess } from "../../../api/lib/GuessApi";
+import "../../css/table.css";
 
-// Stawki
-function Playoff({ matchesGr }) {
+function Playoff({ matchesGr, availablePO }) {
   const [success, setSuccess] = useState(false);
-  const [guesses] = useState([]);
+  const guesses = [];
 
   const getScore = (matchId, score1, score2) => {
     var guess = {};
@@ -33,7 +31,7 @@ function Playoff({ matchesGr }) {
     }
   };
 
-  function onSubmit() {
+  const onSubmit = () => {
     var tmp = guesses.map((el) => {
       if (
         el.matchId !== undefined &&
@@ -42,9 +40,10 @@ function Playoff({ matchesGr }) {
       ) {
         return el;
       }
+      return null;
     });
     var guessesData = {
-      guesses: tmp,
+      guesses: tmp.filter(Boolean),
     };
     var token = null;
     if (typeof window !== "undefined") {
@@ -53,7 +52,7 @@ function Playoff({ matchesGr }) {
     saveGuess(guessesData, token).then(() => {
       setSuccess(true);
     });
-  }
+  };
 
   let date = new Date();
   date.setDate(date.getDate());
@@ -61,54 +60,50 @@ function Playoff({ matchesGr }) {
   date.setMinutes(date.getMinutes() + 5);
   let today = date.getTime();
   today = Math.floor(today / 1000);
-  
-  return (
+
+  return !availablePO ? (
+    <div className="fill text-center" id="matches">
+      Loading..
+    </div>
+  ) : (
     <div>
       <div className="fill" id="matches">
         {matchesGr &&
           matchesGr.map((match) =>
             today >= match.due ? (
-              <>
-                <div className="m-2">
-                  <Rez
-                    key={match._id}
-                    name1={match.team1.name}
-                    name2={match.team2.name}
-                    score1={match.score1}
-                    score2={match.score2}
-                    code1={match.team1.code}
-                    code2={match.team2.code}
-                    guesses={match.guesses}
-                    data={match.date}
-                    completed={match.completed}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <Match
+              <div className="m-2" key={match._id}>
+                <Rez
                   key={match._id}
                   name1={match.team1.name}
                   name2={match.team2.name}
-                  code1={match.team1.code}
-                  code2={match.team2.code}
-                  date={match.date}
-                  time={match.time}
-                  matchId={match._id}
-                  data={match}
-                  passScore={getScore}
-                  guess1={
-                    match.currentUserGuess === undefined
-                      ? ""
-                      : match.currentUserGuess.score1
-                  }
-                  guess2={
-                    match.currentUserGuess === undefined
-                      ? ""
-                      : match.currentUserGuess.score2
-                  }
+                  score1={match.score1}
+                  score2={match.score2}
+                  guesses={match.guesses}
+                  data={match.date}
+                  completed={match.completed}
                 />
-              </>
+              </div>
+            ) : (
+              <Match
+                key={match._id}
+                name1={match.team1.name}
+                name2={match.team2.name}
+                date={match.date}
+                time={match.time}
+                matchId={match._id}
+                data={match}
+                passScore={getScore}
+                guess1={
+                  match.currentUserGuess === undefined
+                    ? ""
+                    : match.currentUserGuess.score1
+                }
+                guess2={
+                  match.currentUserGuess === undefined
+                    ? ""
+                    : match.currentUserGuess.score2
+                }
+              />
             )
           )}
         <div className="d-flex">

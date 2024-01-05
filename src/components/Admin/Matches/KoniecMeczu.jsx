@@ -5,12 +5,6 @@ function KoniecMeczu({ team1, team2, score1, score2, date, time }) {
     <div>
       <div className="wyniki">
         <>
-          <img
-            className="flex image1 flagres"
-            htmlFor="first"
-            src={`https://countryflagsapi.com/png/${team1.code}`}
-            alt={team1.code}
-          />
           <h4 className="flex text1">{team1.name}</h4>
         </>
 
@@ -27,12 +21,6 @@ function KoniecMeczu({ team1, team2, score1, score2, date, time }) {
 
         <>
           <h4 className="flex text2">{team2.name}</h4>
-          <img
-            className="flex image1 flagres"
-            htmlFor="first"
-            src={`https://countryflagsapi.com/png/${team2.code}`}
-            alt={team2.code}
-          />
         </>
       </div>
     </div>

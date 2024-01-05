@@ -2,7 +2,7 @@ import axios from "axios";
 
 var token=''
 const axiosMatches = axios.create({
-  baseURL: "https://fifa-rates-backend.loca.lt/api/v1/rates/",
+  baseURL: "http://localhost:5002/api/v1/rates/",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",

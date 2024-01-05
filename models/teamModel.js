@@ -7,7 +7,7 @@ const Date = {
 
 const DBSchema = mongoose.Schema(
   {
-    code: { type: String, },
+    code: { type: String, default:0},
     name: { type: String, },
     group:{type:String},
     score: {type:Number,default:0},

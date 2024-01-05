@@ -1,33 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import "../css/nav.css";
 
-function Navigation({ role, name }) {
-  const [render, setRender] = useState(false);
-  const [navigacja, setNavigation] = useState(true);
-  useEffect(() => {
-    if (window.localStorage.getItem("token") == null) {
-      setNavigation(false);
-    }
-  }, [render]);
-
+function Navigation({ role, name, navigation }) {
   function logOut() {
     window.localStorage.removeItem("token");
     window.location("/register");
-    setRender(true);
   }
 
   let user = `${name}`;
   const names = user.split(` `);
 
-  return navigacja ? (
+  return navigation ? (
     <>
       <nav className=" text-warning d-lg-none d-md-none d-sm-flex flex-column flex-wrap">
-        <div class="pos-f-t m-3">
-            <ul class="nav d-flex justify-content-center">
+        <div className="pos-f-t m-3">
+            <ul className="nav d-flex justify-content-center">
               <li className="m-3">
                 <h3 className="none me-4">
                   {names[0]} <CgProfile />
@@ -132,7 +123,7 @@ function Navigation({ role, name }) {
       </nav>
     </>
   ) : (
-    ""
+    <></>
   );
 }
 

@@ -66,12 +66,6 @@ function ListaMeczow({ team1, team2, matchId, date, time, setRender, render }) {
   return (
     <div>
       <div className="wyniki">
-        <img
-          className="flex image1 flagres"
-          htmlFor="first"
-          src={`https://countryflagsapi.com/png/${team1.code}`}
-          alt={team1.code}
-        />
         <h4 className="flex text1">{team1.name}</h4>
         <div className="empty"></div>
         <div className="timeAd">{time}</div>
@@ -91,12 +85,6 @@ function ListaMeczow({ team1, team2, matchId, date, time, setRender, render }) {
           placeholder="0"
         />
         <h4 className="flex text2">{team2.name}</h4>
-        <img
-          className="flex image1 flagres"
-          htmlFor="first"
-          src={`https://countryflagsapi.com/png/${team2.code}`}
-          alt={team2.code}
-        />
         <button className="btnEdit">Edytowanie</button>
         <button className="btnDelete" onClick={(e) => handleDelete(e, matchId)}>
           Usuwanie

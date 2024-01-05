@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import swal from "sweetalert";
 import { useForm } from "react-hook-form";
 import { createUser } from "../../api/lib/UsersApi";
@@ -14,11 +14,9 @@ function Register() {
     formState: { errors },
   } = useForm();
 
-  useEffect(() => {
     if (window.localStorage.getItem("token") !== null) {
       window.location.assign("/");
     }
-  }, []);
 
   function onSubmit(data) {
     createUser(data)

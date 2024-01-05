@@ -28,12 +28,6 @@ class Match extends React.Component {
     return (
       <div className="wyniki">
         <div className="empty"></div>
-        <img
-          className="flex image1 flagres"
-          htmlFor="first"
-          src={`https://countryflagsapi.com/png/${this.props.code1}`}
-          alt={this.props.code1}
-        />
         <h4 className="flex text1">{this.props.name1}</h4>
 
         <h3 className="matchTime">{this.props.time}</h3>
@@ -58,12 +52,6 @@ class Match extends React.Component {
 
         <h6 className="matchData">{this.props.date}</h6>
         <h4 className="flex text2">{this.props.name2}</h4>
-        <img
-          className="flex image2 flagres"
-          htmlFor="first"
-          src={`https://countryflagsapi.com/png/${this.props.code2}`}
-          alt={this.props.code2}
-        />
       </div>
     );
   }
