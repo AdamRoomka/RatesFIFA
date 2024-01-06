@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+
+
+
+.home_main {
+    padding: 20px;
+}
+
+.main-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.create-button {
+    margin-right: 3%;
+    text-decoration: none;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.create-button:hover {
+    background-color: #000000c0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:hover {
+    background-color: #33333317;
+}
+
+.offline,
+.online,
+.finished,
+.your-group {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.offline {
+    background-color: gray;
+}
+
+.online {
+    background-color: green;
+}
+
+.finished {
+    background-color: red;
+}
+
+.your-group {
+    background-color: blue;
+}
+
+.players-info {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+#your-group tr td {
+    display: flex;
+    justify-content: space-between;
+}
+
+table button {
+    text-decoration: none;
+    color: black;
+}
+
+#buttonGroup {
+    cursor: pointer;
+}

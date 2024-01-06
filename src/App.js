@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Fifa from "./components/Fifa/Fifa";
+import Home from "./components/Home";
+// import Fifa from "./components/Fifa/Fifa";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Navigation from "./components/Navigation/Navigation";
@@ -28,8 +29,6 @@ function App() {
       window.location.pathname === "/login"
     ) {
       return;
-    } else {
-      window.location.assign("/register");
     }
     return () => {};
   }, []);
@@ -39,8 +38,9 @@ function App() {
       <Router>
         <Navigation token={token} />
         <Routes>
-          <Route path="/" element={<Fifa />} />
-          {/* <Route path="/stawki" element={<Stawki />} />
+          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Fifa />} /> */}
+          {/*  <Route path="/stawki" element={<Stawki />} />
           <Route path="/*" element={<ErrorPage />} />
           <Route path="/admin" element={<Admin />} />
           <Route

@@ -11,41 +11,40 @@ function Navigation({ token }) {
   }
 
   return (
-    <>
+    <header>
+      <div className="logo">Rates 2.1</div>
       <nav className="navbar">
-        <div className="navbar-container">
-          <ul className="nav-list">
-            <li className="nav-item">
-              <h3 className="profile">
-                {token ? token.login : "user"} <CgProfile />
-              </h3>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Główna strona
+        <ul className="nav-list">
+          <li>
+            <Link className="nav-link" to="/profile">
+              {token ? token.login : "User"} <CgProfile />
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="nav-link" to="/groupes">
+              Groupes
+            </Link>
+          </li>
+          {"role" === "admin" && (
+            <li>
+              <Link className="nav-link" to="/admin">
+                Admin
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/stawki">
-                Stawki
-              </Link>
-            </li>
-            {"role" === "admin" && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/admin">
-                  Admin
-                </Link>
-              </li>
-            )}
-            <li className="nav-item">
-              <Link className="nav-link" to="/" onClick={logOut}>
-                Log Out
-              </Link>
-            </li>
-          </ul>
-        </div>
+          )}
+          <li>
+            <Link className="nav-link" to="/" onClick={logOut}>
+              Log Out
+            </Link>
+          </li>
+        </ul>
       </nav>
-    </>
+    </header>
   );
 }
 

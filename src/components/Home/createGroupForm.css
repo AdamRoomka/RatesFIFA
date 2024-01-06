@@ -1,0 +1,51 @@
+.create-group-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.create-group-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.create-group-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.create-group-form div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create-group-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-group-form #cancelButton {
+    background-color: #888;
+    color: #fff;
+}
+
+.create-group-form #cancelButton:hover {
+    background-color: #555;
+}
+
+.create-group-form #saveButton {
+    background-color: #333;
+    color: #fff;
+}
+
+.create-group-form #saveButton:hover {
+    background-color: #000;
+}
